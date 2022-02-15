@@ -7,40 +7,37 @@ const Footer = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-sm-6 col-md-3 item'>
-              <h3>Services</h3>
+              <h3>Locations</h3>
               <ul>
                 <li>
-                  <a href='#'>Web design</a>
+                  <a href='#'>USA</a>
                 </li>
                 <li>
-                  <a href='#'>Development</a>
+                  <a href='#'>Canada</a>
                 </li>
                 <li>
-                  <a href='#'>Hosting</a>
+                  <a href='#'>UK</a>
                 </li>
               </ul>
             </div>
             <div className='col-sm-6 col-md-3 item'>
-              <h3>About</h3>
+              <h3>Support</h3>
               <ul>
                 <li>
-                  <a href='#'>Company</a>
+                  <a href='#'>Contact us</a>
                 </li>
                 <li>
-                  <a href='#'>Team</a>
+                  <a href='#'>About</a>
                 </li>
                 <li>
-                  <a href='#'>Careers</a>
+                  <a href='#'>Blogs</a>
                 </li>
               </ul>
             </div>
             <div className='col-md-6 item text'>
-              <h3>Company Name</h3>
+              <h3>CarRental</h3>
               <p>
-                Praesent sed lobortis mi. Suspendisse vel placerat ligula.
-                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
-                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
-                in justo.
+              We help car rental and livery agencies to manage their business operations. ·
               </p>
             </div>
             <div className='col item social'>
@@ -58,7 +55,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <p className='copyright'>Company Name © 2022</p>
+          <p className='copyright'>CarRental © 2022</p>
         </div>
       </footer>
     </div>
