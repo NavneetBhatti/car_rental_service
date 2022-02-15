@@ -5,18 +5,18 @@ export const MenuList = [
     },
     {
       title: "CarList",
-      url: "/recording",
+      url: "/Carlist",
     },
     {
       title: "Payment",
-      url: "/user",
+      url: "/Payment",
     },
     {
       title: "Bookings",
-      url: "/result",
+      url: "/Booking",
     },
     {
       title: "Sign up",
-      url: "/user",
+      url: "/Signup",
     },
   ];

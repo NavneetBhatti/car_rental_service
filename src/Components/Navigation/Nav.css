@@ -52,5 +52,9 @@ nav {
     background-color: #fff;
     color: #000;
   }
+  .navbar-corner {
+    /* border-radius: 25px; */
+    border-radius: 1px 1px 25px 25px;
+  }
   
   

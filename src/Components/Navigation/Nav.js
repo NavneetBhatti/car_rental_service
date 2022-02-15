@@ -18,8 +18,8 @@ const Navbar = () => {
   
 
   return (
-    <nav>
-      <div className="logo">
+    <nav navbar-corner>
+      <div className="logo ">
         Car<font>Rental</font>
       </div>
      
