@@ -8,15 +8,19 @@ export const MenuList = [
       url: "/Carlist",
     },
     {
-      title: "Payment",
-      url: "/Payment",
+      title: "About us",
+      url: "/about",
     },
     {
-      title: "Bookings",
+      title: "Contact",
       url: "/Booking",
     },
     {
-      title: "Sign up",
-      url: "/Signup",
+      title: "Register",
+      url: "/register",
+    },
+    {
+      title: "Sign in",
+      url: "/Sign",
     },
   ];

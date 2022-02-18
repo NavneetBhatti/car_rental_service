@@ -2,11 +2,11 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from "./Components/Navigation/Nav";
 import Footer from './Components/Footer';
-import Home from './Components/Home';
-import Carlist from './Components/Carlist';
-import Payment from './Components/Payment';
-import Bookings from './Components/Bookings';
-import Register from './Components/Register';
+import Home from './Pages/Home';
+import Carlist from './Pages/Carlist';
+import Payment from './Pages/Payment';
+import Bookings from './Pages/MyBookings';
+import Register from './Pages/Register';
 
 
 

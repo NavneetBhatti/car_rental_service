@@ -1,9 +1,9 @@
-import companyLogo from "./Assets/test.jpeg";
-import carRent from "./Assets/carRent.jpg";
-import garage from "./Assets/Garage.jpg";
-import Support from "./Assets/Support.png"
-import hertz from "./Assets/hertz.jpg"
-import rental from "./Assets/rental.jpeg"
+import companyLogo from "../Components/Assets/test.jpeg"; 
+import carRent from "../Components/Assets/carRent.jpg";
+import garage from "../Components/Assets/Garage.jpg";
+import Support from "../Components/Assets/Support.png"
+import hertz from "../Components/Assets/hertz.jpg"
+import rental from "../Components/Assets/rental.jpeg"
 
 const Home = () => {
   return (
