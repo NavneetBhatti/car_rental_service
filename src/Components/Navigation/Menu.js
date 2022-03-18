@@ -7,6 +7,7 @@ export const MenuList = [
       title: "CarList",
       url: "/Carlist",
     },
+
     {
       title: "About us",
       url: "/about",
@@ -22,5 +23,9 @@ export const MenuList = [
     {
       title: "Sign in",
       url: "/Sign",
+    },
+    {
+      title: "Admin",
+      url: "/Admin_addcar",
     },
   ];
