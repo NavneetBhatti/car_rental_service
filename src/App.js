@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import Carlist from './Pages/Carlist';
 import Admin_addcar from './Admin/AddCars';
+import Admin_userlist from './Admin/UserList';
 import Payment from './Pages/Payment';
 import Bookings from './Pages/MyBookings';
 import Register from './Pages/Register';
@@ -20,6 +21,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="Admin_addcar" element={<Admin_addcar />} />
+					<Route path="Admin_userlist" element={<Admin_userlist />} />
 					<Route path="Carlist" element={<Carlist />} />
 					<Route path="Payment" element={<Payment />} />
 					<Route path="Booking" element={<Bookings />} />
