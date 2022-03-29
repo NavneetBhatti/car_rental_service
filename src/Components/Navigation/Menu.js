@@ -1,7 +1,7 @@
 export const MenuList = [
     {
       title: "Home",
-      url: "/",
+      url: "/Home",
     },
     {
       title: "CarList",
@@ -22,10 +22,11 @@ export const MenuList = [
     },
     {
       title: "Sign in",
-      url: "/Sign",
+      url: "/",
     },
     {
       title: "Admin",
       url: "/Admin_addcar",
     },
+    
   ];
