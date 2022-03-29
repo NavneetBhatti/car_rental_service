@@ -1,34 +1,98 @@
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import decode from 'jwt-decode';
+import AuthContext from '../context/AuthContext';
+
 const Login = () => {
-    return(
-        <div className="inner">
-<form>
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [formData, setFromDate] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = formData;
 
-<h3>Log in</h3>
+  const onChange = (e) => {
+    setFromDate({ ...formData, [e.target.name]: e.target.value });
+  };
 
-<div className="form-group">
-    <label>Email</label>
-    <input type="email" className="form-control" placeholder="Enter email" />
-</div>
+  const [err,SetError]=useState("");
 
-<div className="form-group">
-    <label>Password</label>
-    <input type="password" className="form-control" placeholder="Enter password" />
-</div>
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-<div className="form-group">
-    <div className="custom-control custom-checkbox">
-        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-    </div>
-</div>
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    let data = {
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/auth',
+        data,
+        config
+      );
 
-<button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
-<p className="forgot-password text-right">
-    Forgot <a href="login.js">password?</a>
-</p>
-</form>
+      console.log(response);
+      localStorage.setItem('token', response.data.token);
+      console.log(decode(response.data.token));
+      auth.login();
+      navigate('/Home');
+    } catch (error) {
+      if(error.response && error.response.status >= 400 && error.response.status <=500){
+        SetError(error.response.data)
+        console.log(err);
+      }
+    }
+  };
+  return (
+    <div className='inner'>
+      <h3>Login</h3>
+      <form onSubmit={(e) => onSubmit(e)}>
+        <div>
+        <label>Name</label>
+
+          <input
+          required
+          className='form-control'
+            type='email'
+            placeholder='Email Address'
+            name='email'
+            value={email}
+            onChange={(e) => onChange(e)}
+          />
         </div>
-        
-    )
-}
-export default Login
+        <div>
+        <label>Password</label>
+          <input
+          required
+            className='form-control'
+            type='password'
+            placeholder='Password'
+            name='password'
+            minLength='4'
+            value={password}
+            onChange={(e) => onChange(e)}
+          />
+
+        </div>
+        {err.errors && <div className='alert alert-danger'>{err.errors}</div>}
+
+        <br></br>
+        <input className='btn btn-dark btn-lg btn-block' type='submit' value='LOGIN' />&nbsp;
+        <Link to='/Register' className='btn btn-dark btn-lg btn-block'>Sign Up</Link> 
+
+      </form>
+      <p>
+        <Link to='/Forgot'>Forgot Password?</Link>
+      </p>
+    </div>
+  );
+};
+
+export default Login;
