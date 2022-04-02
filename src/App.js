@@ -7,6 +7,7 @@ import Carlist from './Pages/Carlist';
 import Admin_addcar from './Admin/AddCars';
 import Payment from './Pages/Payment';
 import Bookings from './Pages/MyBookings';
+import BookCar from './Pages/BookCar';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
@@ -34,7 +35,7 @@ const App = () => {
 		<Route path="Admin_addcar" element={<Admin_addcar />} />
 		<Route path="Carlist" element={<Carlist />} />
 		<Route path="Payment" element={<Payment />} />
-		<Route path="Booking" element={<Bookings />} />
+		<Route path="Booking" element={<BookCar />} />
 		<Route path="Register" element={<Register />} />
 		<Route path="Home" element={<Home />} />
 		<Route path="Forgot" element={<ForgotPassword />} />

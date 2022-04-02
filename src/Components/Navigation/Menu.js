@@ -14,7 +14,7 @@ export const MenuList = [
     },
     {
       title: "Contact",
-      url: "/Booking",
+      url: "/contact",
     },
     {
       title: "Register",
