@@ -9,6 +9,7 @@ import Payment from './Pages/Payment';
 import Bookings from './Pages/MyBookings';
 import BookCar from './Pages/BookCar';
 import Register from './Pages/Register';
+import Feedback from './Pages/Feedback';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import { useState } from 'react';
@@ -35,9 +36,10 @@ const App = () => {
 		<Route path="Admin_addcar" element={<Admin_addcar />} />
 		<Route path="Carlist" element={<Carlist />} />
 		<Route path="Payment" element={<Payment />} />
-		<Route path="Booking" element={<BookCar />} />
+		<Route path="Booking/:id" element={<BookCar />} />
 		<Route path="Register" element={<Register />} />
 		<Route path="Home" element={<Home />} />
+		<Route path="Feedback" element={<Feedback />} />
 		<Route path="Forgot" element={<ForgotPassword />} />
 
 	</Routes>			

@@ -1,19 +1,39 @@
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import React from "react";
+import React, { useState,useEffect } from "react";
 // import { useForm } from "react-hook-form";
 import "../App.css";
 import {Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 
-const Booking = () => {
+
+const Booking = (props) => {
+    const{ id } = useParams();
+    console.log(id)
+    const[car, setCar] = useState([])
+    const getUsers = async () => {
+        const response = await axios.get(
+          `http://localhost:5000/api/cars/${id}`
+        );
+        setCar(response.data);
+        console.log(response.data);
+     };
+  
+  
+    useEffect(()=>{
+        getUsers();
+    },[setCar])
+
     return(
         <>
 
-        <img src="https://media.istockphoto.com/photos/red-generic-sedan-car-isolated-on-white-background-3d-illustration-picture-id1189903200?k=20&m=1189903200&s=612x612&w=0&h=L2bus_XVwK5_yXI08X6RaprdFKF1U9YjpN_pVYPgS0o="style={{height: "300px",width:"500px"}}/>
+        <img src={car.image}style={{height: "300px",width:"500px"}}/>
         <h2 class="booking">Book Now</h2>
         <form class="bookingForm">
         <input type="button" value="Booked slots"/><br/><br/>
-   
+
+
         <label>Date From : </label>            
         <input type="date" /><br/><br/>
         <label>Date To : </label>            
@@ -23,6 +43,7 @@ const Booking = () => {
             </button>
             </Link>
       </form>
+
         </>
     )
 }

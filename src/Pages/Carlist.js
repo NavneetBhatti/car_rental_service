@@ -12,6 +12,9 @@ const CarList=()=> {
         'http://localhost:5000/api/cars/'
       );
       setUsers(response.data);
+      console.log(response.data);
+      console.log("--test");
+
    };
 
 
@@ -37,11 +40,13 @@ const CarList=()=> {
                       <div class="price">
 
                         <span className="textRight">{currElem.price}</span>
-                        <Link to="/Booking"><button class="btn2">
-                           Book Now
+                        {/* both ways are correct */}
+                        <Link to={`/Booking/${currElem._id}`}><button class="btn2">  
+                        {/* <Link to={'/Booking/'+currElem._id+'/'+currElem.name+'/'+currElem.type+'/'+currElem.price+'/'+currElem.image}><button class="btn2"> */}
+
+                              Book Now
                          </button>
                         </Link>
-                        
                       </div>
     
                     </div>
