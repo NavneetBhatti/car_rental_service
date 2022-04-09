@@ -39,7 +39,7 @@ const Login = () => {
       );
 
       console.log(response);
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('Usertoken', response.data.token);
       console.log(decode(response.data.token));
       auth.login();
       navigate('/');

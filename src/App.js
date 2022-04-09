@@ -26,7 +26,7 @@ const App = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("Usertoken");
     setIsLoggedIn(false);
   };
   let appRoutes;
