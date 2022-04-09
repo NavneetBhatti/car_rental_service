@@ -13,6 +13,8 @@ import Feedback from './Pages/Feedback';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import { useState } from 'react';
+import UserProfile from "./Pages/UserProfile";
+import EditUser from "./Pages/EditUser";
 import AuthContext from './context/AuthContext';
 
 const App = () => {
@@ -41,6 +43,8 @@ const App = () => {
 		<Route path="Home" element={<Home />} />
 		<Route path="Feedback" element={<Feedback />} />
 		<Route path="Forgot" element={<ForgotPassword />} />
+		<Route path="UserProfile" element={<UserProfile />} />
+		<Route path="EditUser" element={<EditUser />} />
 
 	</Routes>			
     );
