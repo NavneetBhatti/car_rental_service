@@ -1,16 +1,21 @@
 import "../Components/css/UserProfile.css";
 import { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 const axios = require("axios");
 
+let token = localStorage.getItem("token");
+let a = null;
+if (token) {
+  let decoded = jwt_decode(token);
+  a = "http://localhost:5000/api/user/" + decoded.user.id;
+}
 
+console.log(a);
 const UserProfile = () => {
-  let a = "http://localhost:5000/api/user/1";
   const [posts, setPosts] = useState([]);
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get(
-        a
-      );
+      const response = await axios.get(a);
       setPosts(response.data);
     } catch (err) {
       console.log(err.message);
@@ -84,13 +89,20 @@ const Postdata = ({ post }) => {
                     </div>
                     <div className="form-group col-md-2">
                       <form action="/editUser">
-                        <input type="text" name="userID" value= {post.id} hidden/>
-                      <input type="submit" value="Update details" className="btn btn-primary btn-sm" />
+                        <input
+                          type="text"
+                          name="userID"
+                          value={post.id}
+                          hidden
+                        />
+                        <input
+                          type="submit"
+                          value="Update details"
+                          className="btn btn-primary btn-sm"
+                        />
                       </form>
-                   
                     </div>
-
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>

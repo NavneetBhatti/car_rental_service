@@ -34,17 +34,17 @@ const App = () => {
   if (isLoggedIn) {
     appRoutes = (
       <Routes>
-        <Route path="Login" element={<Login />} />
+        
         <Route path="Admin_addcar" element={<Admin_addcar />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
-        <Route path="Register" element={<Register />} />
+        
 		<Route path="Contact" element={<Contact />} />
         <Route path="/" element={<Home />} />
         <Route path="Feedback" element={<Feedback />} />
         <Route path="Forgot" element={<ForgotPassword />} />
-        <Route path="UserProfile" element={<UserProfile />} />
+       <Route path="UserProfile" element={<UserProfile />} />
         <Route path="EditUser" element={<EditUser />} />
       </Routes>
     );
