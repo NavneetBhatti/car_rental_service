@@ -4,7 +4,7 @@ const axios = require("axios");
 
 
 const UserProfile = () => {
-  let a = "http://localhost:9999/api/user/getUser/1";
+  let a = "http://localhost:5000/api/user/1";
   const [posts, setPosts] = useState([]);
   const sendGetRequest = async () => {
     try {

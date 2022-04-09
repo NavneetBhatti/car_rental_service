@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import decode from 'jwt-decode';
-import AuthContext from '../context/AuthContext';
+import AuthContext from '../Components/context/AuthContext';
 
 const Register = () => {
   const auth = useContext(AuthContext);
