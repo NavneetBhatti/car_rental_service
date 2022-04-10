@@ -40,12 +40,14 @@ const App = () => {
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
         
-		<Route path="Contact" element={<Contact />} />
+		   <Route path="Contact" element={<Contact />} />
         <Route path="/" element={<Home />} />
         <Route path="Feedback" element={<Feedback />} />
         <Route path="Forgot" element={<ForgotPassword />} />
        <Route path="UserProfile" element={<UserProfile />} />
         <Route path="EditUser" element={<EditUser />} />
+        <Route path="Bookings" element={<Bookings />} />
+
       </Routes>
     );
   } else {
