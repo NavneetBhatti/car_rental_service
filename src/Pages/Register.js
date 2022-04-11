@@ -13,7 +13,7 @@ const Register = () => {
     lastname: '',
     password: '',
   });
-  const { firstname, lastname,email, password } = formData2;
+  const { firstname, lastname,email, password,age,phone } = formData2;
 
   const onChange = (e) => {
     setFromDate({ ...formData2, [e.target.name]: e.target.value });
@@ -33,6 +33,8 @@ const Register = () => {
         lastname:lastname,
         email: email,
         password: password,
+        age:age,
+        phone:phone
       };
 
   
@@ -95,6 +97,29 @@ const Register = () => {
             placeholder='Email Address'
             name='email'
             value={email}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div>
+        <label>Age</label>
+
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Age'
+            name='age'
+            value={age}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div>
+        <label>Phone</label>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Phone No'
+            name='phone'
+            value={phone}
             onChange={(e) => onChange(e)}
           />
         </div>
