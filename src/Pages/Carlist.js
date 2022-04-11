@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import {Link } from "react-router-dom";
 import axios from 'axios';
 
-
-
-
 const CarList=()=> {
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
@@ -12,7 +9,7 @@ const CarList=()=> {
         let config={
           header:{
           'Content-Type' : 'application/json',
-          'x-auth-token': token,
+          //'x-auth-token': token,
         },
       };
       const response = await axios.get(

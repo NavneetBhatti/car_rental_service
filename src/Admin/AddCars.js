@@ -33,9 +33,17 @@ const Admin_addcar = () => {
                     <label>name</label>
                     <input type="text" className="form-control" />
                   </div>
+                  <div className="form-group">
+                    <label>brand</label>
+                    <input type="text" className="form-control" />
+                  </div>
 
                   <div className="form-group">
-                    <label>model</label>
+                    <label>type</label>
+                    <input type="text" className="form-control" />
+                  </div>
+                  <div className="form-group">
+                    <label>price</label>
                     <input type="text" className="form-control" />
                   </div>
                   <div className="form-group">
