@@ -40,27 +40,35 @@ const Bookings=()=> {
 
   return (
    <>
-      <div>
-         
+      <div className="container m-4 p-4">
+      <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Car Name</th>
+                      <th scope="col">Car Type</th>
+                      <th scope="col">Date From</th>
+                      <th scope="col">Date To</th>
+                      <th scope="col">Total Price</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
           {
             users.map((currElem)=>{
               return(
-          <div>
-              <p>Car Name: {currElem.carName}</p>
-              <p>Car Type: {currElem.carType}</p>
-              <p>Date From: {currElem.dateFrom}</p>
-              <p>Date To: {currElem.dateTo}</p>
-              <p>Total Price: {currElem.totalPrice}</p>
-              <p>Status: {currElem.status}</p><br/>
-              {/* <p>car id : {currElem.carId}</p>
-              <p>user: {currElem.user}</p> */}
-
-
-
-          </div>
+                    <tr>
+                      <td>{currElem.carName}</td>
+                      <td>{currElem.carType}</td>
+                      <td>{currElem.dateFrom}</td>
+                      <td>{currElem.dateTo}</td>
+                      <td>{currElem.totalPrice}</td>
+                      <td>{currElem.status}</td>
+                    </tr>
+                
               )
             })}
-
+            </tbody>
+                </table>
       </div>
    </>
   );

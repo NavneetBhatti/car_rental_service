@@ -87,10 +87,6 @@ useEffect(()=>{
     })
     }
 
-    
-    
-
-   
    
 
     function noOfdays() {
@@ -108,20 +104,16 @@ useEffect(()=>{
     },[data])
 
   
-
+ let a = "http://localhost:5000/uploads/" + car.image;
     return(
+     
         <>
-
-
-
-
-
 
 <Row className="m-5">
   <Col>
     <Card style={{ width: '35rem' }} className="p-2" >
         <Card.Header class="bg-dark text-white"><b>{car.name}</b></Card.Header>
-        <Card.Img variant="top" src={car.image} width="290" height="350"  />
+        <Card.Img variant="top" src={a} width="290" height="350"  />
         <ListGroup className="list-group-flush">
             <ListGroupItem>{car.name}</ListGroupItem>
             <ListGroupItem>{car.type}</ListGroupItem>

@@ -1,4 +1,20 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
+import { SidebarList } from "./SidebarList";
+const sidebarList = SidebarList.map(({ url, title }, index) => {
+    return (
+      <li key={index}>
+                
+                  <NavLink exact to={url} activeClassName="active">        
+          {title}
+        </NavLink>
+     
+
+      </li>
+      
+    );
+  });
+
 
 const Sidebar = () => {
   return (
@@ -8,9 +24,10 @@ const Sidebar = () => {
         <span className="fs-4">Sidebar</span>
     </a>
     <hr /> */}
-    <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-            <a href="#" className="nav-link active" aria-current="page">
+    <ul className="sidebar-list ">
+    { sidebarList }
+        {/* <li className="nav-item">
+            <a href="Admin_addcar" className="nav-link  text-white" aria-current="page">
                 <svg className="bi me-2" width={16} height={16}><use xlinkHref="#home" /></svg>
                 Add car
             </a>
@@ -22,11 +39,11 @@ const Sidebar = () => {
             </a>
         </li>
         <li>
-            <a href="#" className="nav-link text-white">
+            <a href="Admin_userlist" className="nav-link text-white">
                 <svg className="bi me-2" width={16} height={16}><use xlinkHref="#table" /></svg>
-                Orders
+                users
             </a>
-        </li>
+        </li> */}
 
     </ul>
 

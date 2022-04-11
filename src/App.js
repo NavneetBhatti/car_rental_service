@@ -20,6 +20,7 @@ import About from "./Pages/About";
 import PasswordReset from "./Pages/PasswordReset";
 import Faq from "./Pages/Faq";
 import AuthContext from "./Components/context/AuthContext";
+import Admin_userlist from "./Admin/UserList";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -39,6 +40,7 @@ const App = () => {
       <Routes>
         
         <Route path="Admin_addcar" element={<Admin_addcar />} />
+        <Route path="Admin_userlist" element={<Admin_userlist />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
@@ -64,6 +66,7 @@ const App = () => {
       <Routes>
 		  <Route path="Contact" element={<Contact />} />
 		  <Route path="/" element={<Home />} />
+      <Route path="Carlist" element={<Carlist />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Register />} />
         <Route path="Forgot" element={<ForgotPassword />} />

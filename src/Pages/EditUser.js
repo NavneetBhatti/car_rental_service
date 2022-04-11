@@ -37,7 +37,7 @@ const EditUser = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:9999/api/user/editUser",
+        "http://localhost:5000/api/user/editUser",
         data,
         config
       );
