@@ -40,7 +40,7 @@ const CarList=()=> {
             users.map((currElem)=>{
               let a = "http://localhost:5000/uploads/"+currElem.image;
               return(
-                <div className="col-10 col-md-4 mt-5 mb-5">
+                <div className="col-10 col-md-4 mt-3 mb-3">
                 <div class="card p-2  ">
                   <div class="d-flex align-items-center">
                     <div class="image"><img src={a} class="rounded" width="155" height="100" /> </div>

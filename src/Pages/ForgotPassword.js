@@ -4,14 +4,15 @@ import axios from "axios";
 const ForgotPassword = () => {
 	const [email, setEmail] = useState("");
 	const [msg, setMsg] = useState("");
-	const [error, setError] = useState("");
+	const [err, setError] = useState("");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = 'http://localhost:8080/api/password-reset';
+			const url = 'http://localhost:5000/api/password-reset';
 			const { data } = await axios.post(url, { email });
-			setMsg(data.message);
+			setMsg(data);
+			console.log(data);
 			setError("");
 		} catch (error) {
 			if (
@@ -19,7 +20,9 @@ const ForgotPassword = () => {
 				error.response.status >= 400 &&
 				error.response.status <= 500
 			) {
-				setError(error.response.data.message);
+				setError(error.response.data);
+				console.log(error.response.data);
+				console.log(err)
 				setMsg("");
 			}
 		}
@@ -31,6 +34,7 @@ const ForgotPassword = () => {
         				<h3>Forgot Password</h3>
 
 			<form className="form-control" onSubmit={handleSubmit}>
+				<div>
 				<input
 					type="email"
 					placeholder="Email"
@@ -40,9 +44,10 @@ const ForgotPassword = () => {
 					required
 					className="form-control"
 				/>
-				{error && <div className="form-control">{error}</div>}
-				{msg && <div className="form-control">{msg}</div>}
-                <input type='submit'className="btn btn-dark btn-lg btn-block" value='Submit' />
+				</div>
+				{err&& <div  className='alert alert-danger'>{err}</div>}
+				{msg && <div  className='alert alert-success'>{msg}</div>}
+                <input type='submit' className="btn btn-dark btn-lg btn-block" value='Submit' />
 
 			</form>
 		</div>

@@ -9,7 +9,7 @@ const Admin_userlist = () => {
     const sendGetRequest = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:9999/api/user/'
+                'http://localhost:5000/api/user/'
             );
             setUsers(response.data);
         } catch (err) {
@@ -24,8 +24,8 @@ const Admin_userlist = () => {
     return (
         <>
             <div classname="container">
-                <div className="row align-items-start">
-                    <div className="col-3">
+                <div className="row">
+                    <div className="col-3 ">
                         <Sidebar />
                     </div>
                     <div className="col-8">
