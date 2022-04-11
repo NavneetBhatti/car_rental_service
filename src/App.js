@@ -16,6 +16,7 @@ import { useState } from "react";
 import UserProfile from "./Pages/UserProfile";
 import EditUser from "./Pages/EditUser";
 import Contact from "./Pages/Contact";
+import PasswordReset from "./Pages/PasswordReset";
 import AuthContext from "./Components/context/AuthContext";
 
 const App = () => {
@@ -39,14 +40,15 @@ const App = () => {
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
-        
+      
 		   <Route path="Contact" element={<Contact />} />
         <Route path="/" element={<Home />} />
         <Route path="Feedback" element={<Feedback />} />
-        <Route path="Forgot" element={<ForgotPassword />} />
        <Route path="UserProfile" element={<UserProfile />} />
         <Route path="EditUser" element={<EditUser />} />
         <Route path="Bookings" element={<Bookings />} />
+        <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+
 
       </Routes>
     );
@@ -57,6 +59,10 @@ const App = () => {
 		  <Route path="/" element={<Home />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Register />} />
+        <Route path="Forgot" element={<ForgotPassword />} />
+        <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+
+
       </Routes>
     );
   }
