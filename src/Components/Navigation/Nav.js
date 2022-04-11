@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import "./Nav.css";
 
+
+
 const Navbar = () => {
   const auth = useContext(AuthContext);
   const [click, setclick] = useState(false);
