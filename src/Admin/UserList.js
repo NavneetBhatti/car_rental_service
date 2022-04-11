@@ -66,13 +66,15 @@ const Admin_userlist = () => {
 
 
 const User = ({ user }) => {
-    const onChange1 = (e) => {
+    const deletefn = async (e) => {
+       
         const id = e.target.getAttribute("data-userid");
+        console.log(id);
         try {
-            const response = await axios.post(
-              'http://localhost:5000/api/user/'+id
+            const response = await axios.delete(
+              'http://localhost:9999/api/user/'+id
             );
-      
+
             console.log(response);
     
           } catch (err) {
@@ -88,7 +90,7 @@ const User = ({ user }) => {
             <td>{user.age}</td>
             <td>{user.phone}</td>
             <td>
-                <button onClick={(e) => onChange1(e)} data-userid={user.id} type="button" className="btn  m-1 btn-sm btn-danger">delete</button>
+                <button onClick={(e) => deletefn(e)} data-userid={user.id} type="button" className="btn  m-1 btn-sm btn-danger">delete</button>
                 <button  data-userid={user.id} type="button" className="btn m-1 btn-sm btn-primary">edit</button>
             </td>
         </tr>
