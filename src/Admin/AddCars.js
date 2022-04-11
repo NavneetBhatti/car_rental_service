@@ -2,10 +2,18 @@ import { Footer } from "../Components/Footer";
 import Sidebar from "./Sidebar";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import axios from "axios";
 
 const Admin_addcar = () => {
   let navigate = useNavigate();
-
+  const [myFile, setFile] = useState();
+  const [formData2, setFromDate] = useState({
+    Brand: "",
+    Name: "",
+    Phone: "",
+    userId: "",
+  });
   let a = null;
   let decoded = null;
   try {
@@ -17,6 +25,51 @@ const Admin_addcar = () => {
   }
 
   try {
+    const { Brand, Name, Price, Type } = formData2;
+
+    const onChange = (e) => {
+      setFromDate({ ...formData2, [e.target.name]: e.target.value });
+    };
+    const onChange2 = (e) => {
+      setFile(e.target.files[0]);
+    };
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+
+      let config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const data = new FormData();
+
+      data.append("name", Name);
+      data.append("brand", Brand);
+      data.append("type", Type);
+      data.append("price", Price);
+      data.append("myFile", myFile);
+
+      // let data = {
+      //   name: Name,
+      //   brand: Brand,
+      //   type: Type,
+      //   price: Price,
+      // };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/cars/",
+          data,
+          config
+        );
+        console.log(response);
+        navigate("/userProfile");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     if (decoded.user.role == "1") {
       return (
         <>
@@ -28,27 +81,64 @@ const Admin_addcar = () => {
               <div className="col">
                 <br />
                 <br />
-                <form>
+                <form onSubmit={(e) => onSubmit(e)}>
                   <div className="form-group">
                     <label>name</label>
-                    <input type="text" className="form-control" />
-                  </div>
-                  <div className="form-group">
-                    <label>brand</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      name="Name"
+                      value={Name}
+                      className="form-control"
+                      id="inputEmail4"
+                      placeholder="Civic"
+                      onChange={(e) => onChange(e)}
+                    />
                   </div>
 
                   <div className="form-group">
+                    <label>brand</label>
+                    <input
+                      type="text"
+                      name="Brand"
+                      value={Brand}
+                      className="form-control"
+                      id="inputEmail4"
+                      placeholder="Honda"
+                      onChange={(e) => onChange(e)}
+                    />
+                  </div>
+                  <div className="form-group">
                     <label>type</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      name="Type"
+                      value={Type}
+                      className="form-control"
+                      id="inputEmail4"
+                      placeholder="Automatic"
+                      onChange={(e) => onChange(e)}
+                    />
                   </div>
                   <div className="form-group">
                     <label>price</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      name="Price"
+                      value={Price}
+                      className="form-control"
+                      id="inputEmail4"
+                      placeholder="50"
+                      onChange={(e) => onChange(e)}
+                    />
                   </div>
                   <div className="form-group">
-                    <label>price</label>
-                    <input type="text" className="form-control" />
+                    <label>Upload car image</label>
+                    <input
+                      type="file"
+                      name="myFile"
+                      className="form-control"
+                      onChange={(e) => onChange2(e)}
+                    />
                   </div>
 
                   <br />
