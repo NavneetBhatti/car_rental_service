@@ -56,8 +56,6 @@ const Bookings=()=> {
           {
             users.map((currElem)=>{
               return(
-
-
                     <tr>
                       <td>{currElem.carName}</td>
                       <td>{currElem.carType}</td>
@@ -66,9 +64,7 @@ const Bookings=()=> {
                       <td>{currElem.totalPrice}</td>
                       <td>{currElem.status}</td>
                     </tr>
-                 
-
-
+                
               )
             })}
             </tbody>

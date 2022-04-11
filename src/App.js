@@ -17,6 +17,7 @@ import UserProfile from "./Pages/UserProfile";
 import EditUser from "./Pages/EditUser";
 import Contact from "./Pages/Contact";
 import AuthContext from "./Components/context/AuthContext";
+import Admin_userlist from "./Admin/UserList";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -36,6 +37,7 @@ const App = () => {
       <Routes>
         
         <Route path="Admin_addcar" element={<Admin_addcar />} />
+        <Route path="Admin_userlist" element={<Admin_userlist />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
