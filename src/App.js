@@ -17,6 +17,7 @@ import UserProfile from "./Pages/UserProfile";
 import EditUser from "./Pages/EditUser";
 import Contact from "./Pages/Contact";
 import PasswordReset from "./Pages/PasswordReset";
+import Faq from "./Pages/Faq";
 import AuthContext from "./Components/context/AuthContext";
 
 const App = () => {
@@ -48,6 +49,8 @@ const App = () => {
         <Route path="EditUser" element={<EditUser />} />
         <Route path="Bookings" element={<Bookings />} />
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+        <Route path="Faq" element={<Faq />} />
+
 
 
       </Routes>
@@ -61,6 +64,8 @@ const App = () => {
         <Route path="Register" element={<Register />} />
         <Route path="Forgot" element={<ForgotPassword />} />
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+        <Route path="Faq" element={<Faq />} />
+
 
 
       </Routes>
