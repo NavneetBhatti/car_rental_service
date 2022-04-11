@@ -1,8 +1,9 @@
 import "../App.css";
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { FiPlus, FiMinus } from 'react-icons/fi';import axios from 'axios';
+import styled from "styled-components";
+import { IconContext } from "react-icons";
+import { FiPlus, FiMinus } from "react-icons/fi";
+import axios from "axios";
 
 const AccordionSection = styled.div`
   display: flex;
@@ -54,64 +55,56 @@ const Dropdown = styled.div`
   }
 `;
 
+const Faq = () => {
+  const [clicked, setClicked] = useState(false);
 
-const Faq=()=> {
-    const [clicked, setClicked] = useState(false);
+  const toggle = (index) => {
+    if (clicked === index) {
+      //if clicked question is already active, then close it
+      return setClicked(null);
+    }
 
-    const toggle = index => {
-      if (clicked === index) {
-        //if clicked question is already active, then close it
-        return setClicked(null);
-      }
-  
-      setClicked(index);
-    };
-  
-    const[users,setUsers]=useState([]) 
+    setClicked(index);
+  };
+
+  const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-      const response = await axios.get(
-        'http://localhost:5000/api/faq'
-      );
-      setUsers(response.data);
-      console.log(response.data);
-      console.log("--test");
+    const response = await axios.get("http://localhost:5000/api/faq");
+    setUsers(response.data);
+    console.log(response.data);
+    console.log("--test");
+  };
 
-   };
-
-
-  useEffect(()=>{
+  useEffect(() => {
     getUsers();
-  },[])
-
+  }, []);
 
   return (
-      <div >
-        
-      <IconContext.Provider value={{ color: '#00FFB9', size: '20px' }}>
-      <AccordionSection>
-        <Container>
-          {users.map((currElem,index) => {
-            return (
-              <>
-                <Wrap onClick={() => toggle(index)} key={index}>
-                  <h1>{currElem.question}</h1>
-                  <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
-                </Wrap>
-                {clicked === index ? (
-                  <Dropdown>
-                    <p>{currElem.answer}</p>
-                  </Dropdown>
-                ) : null}
-              </>
-            );
-          })}
-        </Container>
-      </AccordionSection>
-    </IconContext.Provider>
-
-      </div>
+    <div>
+      <IconContext.Provider value={{ color: "#00FFB9", size: "20px" }}>
+        <AccordionSection>
+          <Container>
+            {users.map((currElem, index) => {
+              return (
+                <>
+                  <Wrap onClick={() => toggle(index)} key={index}>
+                    <h1>{currElem.question}</h1>
+                    <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
+                  </Wrap>
+                  {clicked === index ? (
+                    <Dropdown>
+                      <p>{currElem.answer}</p>
+                    </Dropdown>
+                  ) : null}
+                </>
+              );
+            })}
+          </Container>
+        </AccordionSection>
+      </IconContext.Provider>
+    </div>
   );
-}
+};
 
 export default Faq;
