@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import decode from 'jwt-decode';
-import AuthContext from '../context/AuthContext';
+import AuthContext from '../Components/context/AuthContext';
 
 const Login = () => {
   const auth = useContext(AuthContext);
@@ -39,10 +39,10 @@ const Login = () => {
       );
 
       console.log(response);
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('Usertoken', response.data.token);
       console.log(decode(response.data.token));
       auth.login();
-      navigate('/Home');
+      navigate('/');
     } catch (error) {
       if(error.response && error.response.status >= 400 && error.response.status <=500){
         SetError(error.response.data)
@@ -55,7 +55,7 @@ const Login = () => {
       <h3>Login</h3>
       <form onSubmit={(e) => onSubmit(e)}>
         <div>
-        <label>Name</label>
+        <label>Email</label>
 
           <input
           required
