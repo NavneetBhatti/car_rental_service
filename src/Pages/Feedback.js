@@ -36,7 +36,7 @@ const Feedback = () => {
         },
       };
       const response = await axios.get(
-        "http://localhost:5000/api/feedbacks/all",
+        "http://localhost:5000/all/api/feedbacks",
         config
       );
       setUsers(response.data);
