@@ -305,3 +305,10 @@ button {
 .card {
   border-radius: 0px !important;
 }
+.feedback h5{
+  font-size:15px;
+}
+i{
+  font-size:15px;
+
+}

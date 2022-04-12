@@ -11,6 +11,8 @@ import Bookings from "./Pages/MyBookings";
 import BookCar from "./Pages/BookCar";
 import Register from "./Pages/Register";
 import Feedback from "./Pages/Feedback";
+import FeedbackUser from "./Pages/FeedbackUser";
+
 import Login from "./Pages/Login";
 import ForgotPassword from "./Pages/ForgotPassword";
 import { useState } from "react";
@@ -51,6 +53,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="Register" element={<Register />} />
         <Route path="Feedback" element={<Feedback />} />
+        <Route path="FeedbackUser" element={<FeedbackUser />} />
         <Route path="UserProfile" element={<UserProfile />} />
         <Route path="EditUser" element={<EditUser />} />
         <Route path="Bookings" element={<Bookings />} />

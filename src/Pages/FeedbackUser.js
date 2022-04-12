@@ -10,20 +10,59 @@ import Card from 'react-bootstrap/Card'
 
 
 
-const Feedback=()=> {
+const FeedbackUser=()=> {
   const url="http://localhost:5000/api/feedbacks" 
   const[users,setUsers]=useState([]) 
-  const [data, setData] = useState({
-      name: "",
-      email:"",
-      feedback:""
-  })
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const [data, setData] = useState({
+      name: "",
+      date:{date},
+      feedback:""
+  })
+  
 
 
+  function handle(e){
+      const newdata={...data}
+      newdata[e.target.id]=e.target.value
+      setData(newdata)
+      console.log(newdata)
+
+  }
   
+  const onDelete=(_id)=>{
+      axios.delete(`http://localhost:5000/api/feedbacks/${_id}`)
+    //   alert("del")
+    //   window.location.reload(false);
+      }
+
+
+
+  function submit(e){
+    e.preventDefault();
+    let token = localStorage.getItem('Usertoken');
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-auth-token': token,
+    },
+  };
+    axios.post("http://localhost:5000/api/feedbacks/",{
+      name:data.name,
+      feedback:data.feedback
+    },config)
+    .then(res=>{
+      console.log(res.data)
+    //   alert("feedback added successfully !!")
+    //   window.location.reload(false);
+
+
+  })
+  }
   
+
+
   const getUsers = async () => {
     try {
       let token = localStorage.getItem('Usertoken');
@@ -35,7 +74,7 @@ const Feedback=()=> {
         },
       };
       const response = await axios.get(
-        'http://localhost:5000/api/feedbacks/all',
+        'http://localhost:5000/api/feedbacks/',
         config
       );
       setUsers(response.data);
@@ -44,11 +83,13 @@ const Feedback=()=> {
     }
   };
     
- 
+  useEffect(()=>{
+    getUsers();
+  },[users])
 
 
   useEffect(()=>{
-    getUsers();
+    onDelete();
   },[])
 
 
@@ -67,23 +108,46 @@ const Feedback=()=> {
         </Card.Body><br/>
 
 {/* --form */}
-       
-    </Card>
+        <Form onSubmit={(e)=>submit(e)}>
+        <Form.Group className="mb-3" >
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter Name" onChange={(e)=>handle(e)} id="name" value={data.name}/><br/>
+        </Form.Group>
+
+        
+        <label htmlFor="exampleFormControlTextarea1">Feedback</label>
+      <textarea
+        className="form-control"
+        rows="5"
+        onChange={(e)=>handle(e)} id="feedback" value={data.feedback}
+      /><br/>
+
+
+        <Button variant="primary" type="submit" value="Submit">
+          Submit
+        </Button>
+      </Form>
+
+
+      </Card>
 
 
       {/* ---show added feedback---- */}
-      <Card className="m-5 p-5">
+      <Card className="m-5 p-5" >
       {
             users.map((currElem)=>{
               return(
-                <div class= "feed" style={{border:"1px solid black", marginTop:"10px" }}>
+          <div class= "feed" style={{border:"1px solid black", marginTop:"10px" }}>
              
   <Card.Header><i>{currElem.name}</i></Card.Header>
-  <Card.Body>
+  <Card.Body >
     <blockquote className="blockquote mb-0">
       <p>
         {' '}{currElem.feedback}{' '}
       </p>
+      <Button variant="danger" onClick={()=>onDelete(currElem._id)} style={{marginLeft:"90%" }}>
+          Delete
+        </Button>
       <footer className="blockquote-footer">
         <i>{date} by {currElem.name}</i>
       </footer>
@@ -92,6 +156,7 @@ const Feedback=()=> {
 
 
   </div>
+
               )
             })}
 </Card>
@@ -100,4 +165,4 @@ const Feedback=()=> {
   );
 }
 
-export default Feedback;
+export default FeedbackUser;

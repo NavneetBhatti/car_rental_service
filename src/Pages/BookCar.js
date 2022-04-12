@@ -195,6 +195,14 @@ useEffect(()=>{
      
     </Card.Body>
      </Card><br/><br/>
+
+     <h4>Please add your feedback</h4>
+    <Link to={`/FeedbackUser`}>
+          <Button variant="primary" type="submit"  name="submit">
+              Feedback
+          </Button>         
+    </Link> 
+      
    
   </Col>
 
