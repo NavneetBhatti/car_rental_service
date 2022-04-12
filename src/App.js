@@ -22,6 +22,7 @@ import PasswordReset from "./Pages/PasswordReset";
 import Faq from "./Pages/Faq";
 import AuthContext from "./Components/context/AuthContext";
 import Admin_userlist from "./Admin/UserList";
+import Inquires from "./Admin/Inquires";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -39,42 +40,38 @@ const App = () => {
   if (isLoggedIn) {
     appRoutes = (
       <Routes>
-        
         <Route path="Admin_addcar" element={<Admin_addcar />} />
         <Route path="Admin_about" element={<EditAbout/>} />
         <Route path="Admin_userlist" element={<Admin_userlist />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
-		   <Route path="Contact" element={<Contact />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="Contact" element={<Contact />} />
         <Route path="/" element={<Home />} />
+        <Route path="Register" element={<Register />} />
         <Route path="Feedback" element={<Feedback />} />
-       <Route path="UserProfile" element={<UserProfile />} />
+        <Route path="UserProfile" element={<UserProfile />} />
         <Route path="EditUser" element={<EditUser />} />
         <Route path="Bookings" element={<Bookings />} />
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
-        <Route path="Faq" element={<Faq/>} />
-        <Route path="About" element={<About/>} />
-
+        <Route path="Faq" element={<Faq />} />
+        <Route path="About" element={<About />} />
+        <Route path="Inquires_list" element={<Inquires />} />
       </Routes>
     );
   } else {
     appRoutes = (
       <Routes>
-		  <Route path="Contact" element={<Contact />} />
-		  <Route path="/" element={<Home />} />
-      <Route path="Carlist" element={<Carlist />} />
+        <Route path="Contact" element={<Contact />} />
+        <Route path="/" element={<Home />} />
+        <Route path="Carlist" element={<Carlist />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Register />} />
         <Route path="Forgot" element={<ForgotPassword />} />
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
         <Route path="Faq" element={<Faq />} />
-        <Route path="About" element={<About/>} />
-
-
-
-
-
+        <Route path="About" element={<About />} />
       </Routes>
     );
   }

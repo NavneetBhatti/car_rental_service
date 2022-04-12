@@ -19,9 +19,19 @@ export const MenuList = [
   {
     title: "Feedback",
     url: "/Feedback",
-  }, {
+  },
+   {
     title: "FAQ",
     url: "/Faq",
-  }
+  },
   
+  
+  {
+    title: "My Profile",
+    url: "/UserProfile",
+  },
+  {
+    title: "My Bookings",
+    url: "/Bookings",
+  },
 ];
