@@ -12,7 +12,6 @@ import BookCar from "./Pages/BookCar";
 import Register from "./Pages/Register";
 import Feedback from "./Pages/Feedback";
 import FeedbackUser from "./Pages/FeedbackUser";
-
 import Login from "./Pages/Login";
 import ForgotPassword from "./Pages/ForgotPassword";
 import { useState } from "react";
@@ -25,6 +24,7 @@ import Faq from "./Pages/Faq";
 import AuthContext from "./Components/context/AuthContext";
 import Admin_userlist from "./Admin/UserList";
 import Inquires from "./Admin/Inquires";
+import Respond from "./Admin/Respond";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -43,7 +43,7 @@ const App = () => {
     appRoutes = (
       <Routes>
         <Route path="Admin_addcar" element={<Admin_addcar />} />
-        <Route path="Admin_about" element={<EditAbout/>} />
+        <Route path="Admin_about" element={<EditAbout />} />
         <Route path="Admin_userlist" element={<Admin_userlist />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
@@ -61,6 +61,7 @@ const App = () => {
         <Route path="Faq" element={<Faq />} />
         <Route path="About" element={<About />} />
         <Route path="Inquires_list" element={<Inquires />} />
+        <Route path="Respond" element={<Respond />} />
       </Routes>
     );
   } else {

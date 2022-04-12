@@ -40,7 +40,7 @@ const Admin_userlist = () => {
                   <th scope="col">Email</th>
                   <th scope="col">Age</th>
                   <th scope="col">Phone</th>
-                  <th >role</th>
+                  <th>role</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -97,7 +97,7 @@ const User = ({ user }) => {
       <td>{user.email}</td>
       <td>{user.age}</td>
       <td>{user.phone}</td>
-      <td>{user.role=="1"?"admin":"normal user"}</td>
+      <td>{user.role == "1" ? "admin" : "normal user"}</td>
       <td>
         <button
           onClick={(e) => deletefn(e)}

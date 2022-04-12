@@ -4,20 +4,23 @@ import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 const axios = require("axios");
 
-let token = localStorage.getItem("Usertoken");
-let a = null;
-if (token) {
-  let decoded = jwt_decode(token);
-  a = "http://localhost:5000/api/user/" + decoded.user._id;
-}
-
-console.log(a);
 const UserProfile = () => {
-  let token = localStorage.getItem("Usertoken");
-  let decoded = jwt_decode(token);
   const navigate = useNavigate();
-  if (decoded.user.role == "1") {
-    navigate("/Admin_userlist");
+  let a = null;
+  try {
+    let token = localStorage.getItem("Usertoken");
+    let decoded = jwt_decode(token);
+
+    if (decoded.user.role == "1") {
+      navigate("/Admin_userlist");
+    }
+
+    if (token) {
+      let decoded = jwt_decode(token);
+      a = "http://localhost:5000/api/user/" + decoded.user._id;
+    }
+  } catch (err) {
+    navigate("/");
   }
 
   const [posts, setPosts] = useState([]);

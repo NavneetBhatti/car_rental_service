@@ -7,8 +7,26 @@ import axios from "axios";
 const Inquires = () => {
   const [query, setQuery] = useState([]);
   const sendGetRequest = async () => {
+    let decoded = null;
+    let token = null;
     try {
-      const response = await axios.get("http://localhost:5000/api/inquiry/");
+      token = localStorage.getItem("Usertoken");
+      decoded = jwt_decode(token);
+      // valid token format
+    } catch (error) {
+      return "Forbidden";
+    }
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    };
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/inquiry/",
+        config
+      );
       setQuery(response.data);
     } catch (err) {
       console.log(err.message);
@@ -21,7 +39,7 @@ const Inquires = () => {
     <>
       <div classname="container">
         <div className="row align-items-start">
-          <div className="col">
+          <div className="col-3">
             <Sidebar />
           </div>
           <div className="col-8">
@@ -53,47 +71,60 @@ const Inquires = () => {
 };
 
 const Querylist = ({ query }) => {
-    const deletefn = async (e) => {
-      
-      let decoded = null;
-      let token = null;
-      try {
-        token = localStorage.getItem("Usertoken");
-        decoded = jwt_decode(token);
-        // valid token format
-      } catch (error) {
-        return "Forbidden";
-      }
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": token,
-        },
-      };
-  
-
+  const deletefn = async (e) => {
+    const id = e.target.getAttribute("data-c_id");
+    let token = null;
+    try {
+      token = localStorage.getItem("Usertoken");
+    } catch (error) {
+      return "Forbidden";
+    }
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
     };
-  
-    return (
-      <tr>
-        <td>{query.id}</td>
-        <td>{query.firstname}</td>
-        <td>{query.lastname}</td>
-        <td>{query.email}</td>
-        <td>{query.age}</td>
-        <td>{query.phone}</td>
-        <td>
-          <form action="/editUser">
-            <input type="text" name="userID" value={query.id} hidden />
-            <input
-              type="submit"
-              value="Update details"
-              className="btn btn-primary btn-sm"
-            />
-          </form>
-        </td>
-      </tr>
-    );
+    try {
+      const response = await axios.delete(
+        "http://localhost:5000/api/inquiry/" + id,
+        config
+      );
+      window.location.reload();
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  return (
+    <tr>
+      <td>{query.c_id}</td>
+      <td>{query.subject}</td>
+      <td>{query.name}</td>
+      <td>{query.email}</td>
+      <td>{query.date}</td>
+      <td>
+        <button
+          onClick={(e) => deletefn(e)}
+          data-c_id={query._id}
+          type="button"
+          className="btn  m-1 btn-sm btn-danger"
+        >
+          delete
+        </button>
+        <form action="/Respond">
+          <input type="text" name="c_id" value={query._id} hidden />
+          <input type="text" name="email" value={query.email} hidden />
+          <input
+            type="submit"
+            value="Respond"
+            className="btn btn-primary btn-sm"
+          />
+        </form>
+      </td>
+    </tr>
+  );
+};
 
 export default Inquires;

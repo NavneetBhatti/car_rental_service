@@ -64,7 +64,7 @@ const EditAbout = () => {
       <>
         <div className="container">
           <div className="row align-items-start">
-            <div className="col">
+            <div className="col-3">
               <Sidebar />
             </div>
 

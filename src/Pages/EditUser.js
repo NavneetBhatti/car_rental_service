@@ -66,6 +66,7 @@ const EditUser = () => {
                 id="inputEmail4"
                 placeholder="Update Email"
                 onChange={(e) => onChange(e)}
+                required
               />
             </div>
           </div>
@@ -79,6 +80,7 @@ const EditUser = () => {
               id="inputAddress"
               placeholder="Update your name"
               onChange={(e) => onChange(e)}
+              required
             />
           </div>
           <div className="form-group">
@@ -91,6 +93,7 @@ const EditUser = () => {
               id="inputAddress2"
               placeholder="New phone number"
               onChange={(e) => onChange(e)}
+              required
             />
           </div>
           <div className="form-group">
