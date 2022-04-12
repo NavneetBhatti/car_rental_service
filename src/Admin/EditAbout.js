@@ -62,7 +62,7 @@ const EditAbout = () => {
   if (decoded.user.role == "1") {
     return (
       <>
-        <div className="container">
+        <div className="">
           <div className="row align-items-start">
             <div className="col-3">
               <Sidebar />
