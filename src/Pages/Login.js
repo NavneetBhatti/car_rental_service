@@ -55,7 +55,9 @@ const Login = () => {
     }
   };
   return (
+    
     <div className='inner'>
+    <br />
       <h3>Login</h3>
       <form onSubmit={(e) => onSubmit(e)}>
         <div>

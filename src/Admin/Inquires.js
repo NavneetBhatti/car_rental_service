@@ -8,7 +8,7 @@ const Inquires = () => {
   const [query, setQuery] = useState([]);
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/Inquires/");
+      const response = await axios.get("http://localhost:5000/api/inquiry/");
       setQuery(response.data);
     } catch (err) {
       console.log(err.message);
