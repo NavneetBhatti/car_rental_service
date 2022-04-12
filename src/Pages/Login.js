@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 import AuthContext from '../Components/context/AuthContext';
 
 const Login = () => {
@@ -40,6 +41,9 @@ const Login = () => {
 
       console.log(response);
       localStorage.setItem('Usertoken', response.data.token);
+      let token = localStorage.getItem("Usertoken");
+      let decoded = jwt_decode(token);
+
       console.log(decode(response.data.token));
       auth.login();
       navigate('/');

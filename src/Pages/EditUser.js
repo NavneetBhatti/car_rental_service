@@ -22,9 +22,12 @@ const EditUser = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    let token = localStorage.getItem("Usertoken");
+
     let config = {
       headers: {
         "Content-Type": "application/json",
+        "x-auth-token": token,
       },
     };
 
@@ -37,7 +40,7 @@ const EditUser = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/user/editUser",
+        "http://localhost:5000/api/user/",
         data,
         config
       );
@@ -102,7 +105,6 @@ const EditUser = () => {
           <div className="col-md-3 mb-3">
             <input type="submit" value="Update details" />
           </div>
-          
         </form>
       </div>
     </>

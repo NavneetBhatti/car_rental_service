@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import decode from "jwt-decode";
 
 const Contact = () => {
+  const [err, SetError] = useState("");
   let navigate = useNavigate();
   const [formData2, setFromDate] = useState({
     Name: "",
@@ -35,19 +36,28 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:9999/api/inquiry/regQuery",
+        "http://localhost:5000/api/inquiry/",
         data,
         config
       );
       console.log(response);
-      navigate("/userProfile");
     } catch (err) {
+      if (
+        err.response &&
+        err.response.status >= 400 &&
+        err.response.status <= 500
+      ) {
+        SetError(err.response.data);
+      }
+
       console.log(err);
     }
   };
 
   return (
     <>
+
+{err.errors && <div class="modal-dialog modal-fullscreen-sm-down">{err.errors}</div>}
       <div className="container">
         <section className="mb-4">
           <h2 className="h1-responsive font-weight-bold text-center my-4">
@@ -132,17 +142,15 @@ const Contact = () => {
                   </div>
                 </div>
 
-              <div className="text-center text-md-left">
-                <input
-                  type="submit"
-                  className="btn btn-primary"
-                  value="Send message"
-                />
-              </div>
-              <div className="status"></div>
-
+                <div className="text-center text-md-left">
+                  <input
+                    type="submit"
+                    className="btn btn-primary"
+                    value="Send message"
+                  />
+                </div>
+                <div className="status"></div>
               </form>
-
             </div>
 
             <div className="col-md-3 text-center">
