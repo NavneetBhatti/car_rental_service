@@ -11,6 +11,7 @@ const Admin_userlist = () => {
             const response = await axios.get(
                 'http://localhost:5000/api/user/'
             );
+            console.log(response.data);
             setUsers(response.data);
         } catch (err) {
             console.log(err.message);
@@ -40,6 +41,7 @@ const Admin_userlist = () => {
                                     <th scope="col">Email</th>
                                     <th scope="col">Age</th>
                                     <th scope="col">Phone</th>
+                                    <th scope="col">Role</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -89,8 +91,9 @@ const User = ({ user }) => {
             <td>{user.email}</td>
             <td>{user.age}</td>
             <td>{user.phone}</td>
+            <td>{user.role=="1"?"admin":"normal user"}</td>
             <td>
-                <button onClick={(e) => deletefn(e)} data-userid={user.id} type="button" className="btn  m-1 btn-sm btn-danger">delete</button>
+                <button onClick={(e) => deletefn(e)} data-userid={user._id} type="button" className="btn  m-1 btn-sm btn-danger">delete</button>
                 <button  data-userid={user.id} type="button" className="btn m-1 btn-sm btn-primary">edit</button>
             </td>
         </tr>
