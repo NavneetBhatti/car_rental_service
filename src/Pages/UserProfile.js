@@ -46,6 +46,7 @@ const UserProfile = () => {
 };
 
 const Postdata = ({ post }) => {
+  console.log(post.phone);
   return (
     <>
       <div className="page-content page-container" id="page-content">
