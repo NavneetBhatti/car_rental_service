@@ -13,6 +13,10 @@ export const MenuList1 = [
     url: "/about",
   },
   {
+    title: "Feedback",
+    url: "/Feedback",
+  },
+  {
     title: "Contact",
     url: "/contact",
   },
@@ -24,6 +28,4 @@ export const MenuList1 = [
     title: "Register",
     url: "/Register",
   },
-
-]
-
+];

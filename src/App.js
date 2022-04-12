@@ -70,6 +70,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Login" element={<Login />} />
+        <Route path="Feedback" element={<Feedback />} />
         <Route path="Register" element={<Register />} />
         <Route path="Forgot" element={<ForgotPassword />} />
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
