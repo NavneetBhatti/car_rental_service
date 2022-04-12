@@ -38,7 +38,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import {Link } from "react-router-dom";
+import {Card } from "react-bootstrap";
 import axios from 'axios';
 
 
@@ -71,9 +71,16 @@ const About=()=> {
           {
             users.map((currElem)=>{
               return(
-          <div class= "inner">
-              <h1>Name:{currElem.name}</h1>
-              <p>Email:{currElem.email}</p>
+          <div className="container-fluid px-0" >
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Body>
+            <Card.Title>{currElem.name}</Card.Title>
+            <Card.Text>
+             {currElem.email}
+            </Card.Text>
+            </Card.Body>
+            </Card>
 
           </div>
               )
