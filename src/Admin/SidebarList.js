@@ -6,5 +6,9 @@ export const SidebarList = [
   {
     title: "Users",
     url: "/Admin_userlist",
+  },
+   {
+    title: "About",
+    url: "/Admin_about",
   }
 ];

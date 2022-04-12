@@ -19,6 +19,9 @@ export const MenuList = [
   {
     title: "Feedback",
     url: "/Feedback",
+  }, {
+    title: "FAQ",
+    url: "/Faq",
   }
   
 ];

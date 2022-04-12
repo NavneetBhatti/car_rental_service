@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Carlist from "./Pages/Carlist";
 import Admin_addcar from "./Admin/AddCars";
+import EditAbout from "./Admin/EditAbout";
 import Payment from "./Pages/Payment";
 import Bookings from "./Pages/MyBookings";
 import BookCar from "./Pages/BookCar";
@@ -40,11 +41,11 @@ const App = () => {
       <Routes>
         
         <Route path="Admin_addcar" element={<Admin_addcar />} />
+        <Route path="Admin_about" element={<EditAbout/>} />
         <Route path="Admin_userlist" element={<Admin_userlist />} />
         <Route path="Carlist" element={<Carlist />} />
         <Route path="Payment" element={<Payment />} />
         <Route path="Booking/:id" element={<BookCar />} />
-      
 		   <Route path="Contact" element={<Contact />} />
         <Route path="/" element={<Home />} />
         <Route path="Feedback" element={<Feedback />} />
@@ -54,10 +55,6 @@ const App = () => {
         <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
         <Route path="Faq" element={<Faq/>} />
         <Route path="About" element={<About/>} />
-
-        
-
-
 
       </Routes>
     );

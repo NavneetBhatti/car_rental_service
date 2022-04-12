@@ -1,41 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
-
-// const About = () => {
-//   const [todos, setTodos] = useState([]);
-
-//   const sendGetRequest = async () => {
-//     try {
-     
-//       const response = await axios.get(
-//         'http://localhost:5000/api/faq'
-//       );
-//       setTodos(response);
-//       console.log(response);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-//   return (
-//     <div>
-//       {todos.map((t) => (
-//         <Todo todo={t} key={t._id} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// const Todo = ({ todo }) => {
-//   return (
-//     <div>
-//       <h3>{todo.name}</h3>
-//       <p>{todo.email}</p>
-//     </div>
-//   );
-// };
-
-// export default About;
-
 
 import React, { useEffect, useState } from "react";
 import {Card } from "react-bootstrap";
@@ -66,18 +28,19 @@ const About=()=> {
 
 
   return (
-   <>
-      <div>
+   <div className="inner">
+      <div className="mb-4">
+      
           {
             users.map((currElem)=>{
               return(
-          <div className="container-fluid px-0" >
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+          <div >
+          <Card style={{ width: '20rem'}}>
+          
             <Card.Body>
-            <Card.Title>{currElem.name}</Card.Title>
+            <Card.Title>{currElem.title}</Card.Title>
             <Card.Text>
-             {currElem.email}
+             {currElem.description}
             </Card.Text>
             </Card.Body>
             </Card>
@@ -87,7 +50,7 @@ const About=()=> {
             })}
 
       </div>
-   </>
+   </div>
   );
 }
 
