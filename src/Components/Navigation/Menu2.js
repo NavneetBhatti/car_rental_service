@@ -1,10 +1,14 @@
 export const MenuList2 = [
   {
-    title: "Login",
-    url: "/login",
+    title: "Home",
+    url: "/",
   },
   {
-    title: "Register",
-    url: "/Register",
+    title: "CarList",
+    url: "/Carlist",
+  },
+  {
+    title: "Admin",
+    url: "/Admin_addcar",
   },
 ];

@@ -6,9 +6,8 @@ import { MenuList1 } from "./Menu1";
 import { MenuList2 } from "./Menu2";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import jwt_decode from "jwt-decode";
 import "./Nav.css";
-
-
 
 const Navbar = () => {
   const auth = useContext(AuthContext);
@@ -20,7 +19,6 @@ const Navbar = () => {
           {title}
         </NavLink>
       </li>
-      
     );
   });
 
@@ -31,7 +29,6 @@ const Navbar = () => {
           {title}
         </NavLink>
       </li>
-      
     );
   });
 
@@ -42,30 +39,53 @@ const Navbar = () => {
           {title}
         </NavLink>
       </li>
-      
     );
   });
 
-  return (
-    <nav navbar-corner>
-            <div className="logo ">
-        Car<font>Rental</font>
-      </div>
-      <ul className={click ? "menu-list" : "menu-list close"}>{menuList}</ul>
-      {auth.isLoggedIn && (
-        <>
-<ul className={click ? "menu-list" : "menu-list close"}>{menuList1}</ul>
-        </>
-      )}
-      {auth.isLoggedIn ? (
-        <li>
-          <button onClick={auth.logout}>Logout</button>
-        </li>
-      ) : (
-        <ul className={click ? "menu-list" : "menu-list close"}>{menuList2}</ul>
-      )}
-    </nav>
-  );
+  try {
+    let token = localStorage.getItem("Usertoken");
+    let decoded = jwt_decode(token);
+    if (decoded.user.role == "1"){
+      return (
+        <nav navbar-corner>
+          <div className="logo ">
+            Car<font>Rental</font>
+          </div>
+          <ul className={click ? "menu-list" : "menu-list close"}>
+            {menuList2}
+            <li>
+              <button onClick={auth.logout}>Logout</button>
+            </li>
+          </ul>
+        </nav>
+      );
+    }
+    else{
+       return (
+      <nav navbar-corner>
+        <div className="logo ">
+          Car<font>Rental</font>
+        </div>
+        <ul className={click ? "menu-list" : "menu-list close"}>
+          {menuList}
+          <li>
+            <button onClick={auth.logout}>Logout</button>
+          </li>
+        </ul>
+      </nav>
+    );
+    }
+   
+  } catch (err) {
+    return (
+      <nav navbar-corner>
+        <div className="logo ">
+          Car<font>Rental</font>
+        </div>
+        <ul className={click ? "menu-list" : "menu-list close"}>{menuList1}</ul>
+      </nav>
+    );
+  }
 };
 
 export default Navbar;

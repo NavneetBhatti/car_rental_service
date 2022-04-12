@@ -1,12 +1,29 @@
 export const MenuList1 = [
-        {
-        title: "My Profile",
-        url: "/UserProfile",
-      },
-      {
-        title: "My Bookings",
-        url: "/Bookings",
-      },
+  {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "CarList",
+    url: "/Carlist",
+  },
+
+  {
+    title: "About us",
+    url: "/about",
+  },
+  {
+    title: "Contact",
+    url: "/contact",
+  },
+  {
+    title: "Login",
+    url: "/login",
+  },
+  {
+    title: "Register",
+    url: "/Register",
+  },
 
 ]
 

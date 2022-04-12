@@ -1,17 +1,25 @@
 import "../Components/css/UserProfile.css";
 import { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
+import { Link, useNavigate } from "react-router-dom";
 const axios = require("axios");
 
 let token = localStorage.getItem("Usertoken");
 let a = null;
 if (token) {
   let decoded = jwt_decode(token);
-  a = "http://localhost:5000/api/user/" + decoded.user.id;
+  a = "http://localhost:5000/api/user/" + decoded.user._id;
 }
 
 console.log(a);
 const UserProfile = () => {
+  let token = localStorage.getItem("Usertoken");
+  let decoded = jwt_decode(token);
+  const navigate = useNavigate();
+  if (decoded.user.role == "1") {
+    navigate("/Admin_userlist");
+  }
+
   const [posts, setPosts] = useState([]);
   const sendGetRequest = async () => {
     try {
@@ -53,7 +61,10 @@ const Postdata = ({ post }) => {
                           alt="User-Profile-Image"
                         />{" "}
                       </div>
-                      <h6 className="f-w-600"> {post.name}</h6>
+                      <h6 className="f-w-600">
+                        {" "}
+                        {post.firstname} {post.lastname}
+                      </h6>
 
                       <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                     </div>
@@ -92,7 +103,7 @@ const Postdata = ({ post }) => {
                         <input
                           type="text"
                           name="userID"
-                          value={post.id}
+                          value={post._id}
                           hidden
                         />
                         <input
