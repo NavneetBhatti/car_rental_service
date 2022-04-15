@@ -25,6 +25,7 @@ import AuthContext from "./Components/context/AuthContext";
 import Admin_userlist from "./Admin/UserList";
 import Inquires from "./Admin/Inquires";
 import Respond from "./Admin/Respond";
+import ListCars from "./Admin/ListCars";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -62,6 +63,7 @@ const App = () => {
         <Route path="About" element={<About />} />
         <Route path="Inquires_list" element={<Inquires />} />
         <Route path="Respond" element={<Respond />} />
+        <Route path="Admin_Listcars" element={<ListCars />} />
       </Routes>
     );
   } else {

@@ -4,12 +4,18 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const Admin_userlist = () => {
-  const [users, setUsers] = useState([]);
-
+const ListCars = () => {
+    const [query, setQuery] = useState([]);
   const sendGetRequest = async () => {
-    let token = localStorage.getItem("Usertoken");
-
+    let decoded = null;
+    let token = null;
+    try {
+      token = localStorage.getItem("Usertoken");
+      decoded = jwt_decode(token);
+      // valid token format
+    } catch (error) {
+      return "Forbidden";
+    }
     let config = {
       headers: {
         "Content-Type": "application/json",
@@ -18,24 +24,22 @@ const Admin_userlist = () => {
     };
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/user/",
+        "http://localhost:5000/api/cars/",
         config
       );
-      setUsers(response.data);
+      setQuery(response.data);
     } catch (err) {
       console.log(err.message);
     }
   };
-
   useEffect(() => {
     sendGetRequest();
   }, []);
-
   return (
     <>
       <div classname="container">
-        <div className="row">
-          <div className="col-3 ">
+        <div className="row align-items-start">
+          <div className="col-3">
             <Sidebar />
           </div>
           <div className="col-8">
@@ -45,19 +49,17 @@ const Admin_userlist = () => {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">firstName</th>
-                  <th scope="col">lastname</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Phone</th>
-                  <th>role</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col">Car ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
-                  <User user={user} key={user.id} />
+                {query.map((query) => (
+                  <Querylist query={query} key={query.id} />
                 ))}
               </tbody>
             </table>
@@ -68,23 +70,24 @@ const Admin_userlist = () => {
   );
 };
 
-const User = ({ user }) => {
+const Querylist = ({ query }) => {
   const deletefn = async (e) => {
-    const id = e.target.getAttribute("data-userid");
-    console.log(id);
-
-    let token = localStorage.getItem("Usertoken");
-
+    const id = e.target.getAttribute("data-c_id");
+    let token = null;
+    try {
+      token = localStorage.getItem("Usertoken");
+    } catch (error) {
+      return "Forbidden";
+    }
     let config = {
       headers: {
         "Content-Type": "application/json",
         "x-auth-token": token,
       },
     };
-    console.log(token);
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/user/" + id,
+        "http://localhost:5000/api/cars/" + id,
         config
       );
       window.location.reload();
@@ -96,33 +99,22 @@ const User = ({ user }) => {
 
   return (
     <tr>
-      <td>{user.id}</td>
-      <td>{user.firstname}</td>
-      <td>{user.lastname}</td>
-      <td>{user.email}</td>
-      <td>{user.age}</td>
-      <td>{user.phone}</td>
-      <td>{user.role == "1" ? "admin" : "normal user"}</td>
+      <td>{query.car_id}</td>
+      <td>{query.name}</td>
+      <td>{query.brand}</td>
+      <td>{query.type}</td>
+      <td>{query.price}</td>
       <td>
         <button
           onClick={(e) => deletefn(e)}
-          data-userid={user._id}
+          data-c_id={query.car_id}
           type="button"
           className="btn  m-1 btn-sm btn-danger"
         >
           delete
         </button>
-        <form action="/editUser">
-          <input type="text" name="userID" value={user._id} hidden />
-          <input
-            type="submit"
-            value="Update details"
-            className="btn btn-primary btn-sm"
-          />
-        </form>
       </td>
     </tr>
   );
 };
-
-export default Admin_userlist;
+export default ListCars;

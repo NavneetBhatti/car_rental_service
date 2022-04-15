@@ -7,13 +7,16 @@ export const SidebarList = [
     title: "Users",
     url: "/Admin_userlist",
   },
-   {
+  {
     title: "About",
     url: "/Admin_about",
-  }
-  ,
+  },
   {
     title: "Inquires",
     url: "/Inquires_list",
-  }
+  },
+  {
+    title: "Cars",
+    url: "/Admin_listcars",
+  }, //
 ];
