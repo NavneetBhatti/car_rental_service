@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 
 const Admin_addcar = () => {
+  const [err,SetError]=useState("")
   let navigate = useNavigate();
   const [myFile, setFile] = useState();
   const [formData2, setFromDate] = useState({
@@ -35,13 +36,17 @@ const Admin_addcar = () => {
     };
 
     const onSubmit = async (e) => {
+      
       e.preventDefault();
+      let token = localStorage.getItem("Usertoken");
 
       let config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/json",
+          "x-auth-token": token,
         },
       };
+
       const data = new FormData();
 
       data.append("name", Name);
@@ -50,23 +55,26 @@ const Admin_addcar = () => {
       data.append("price", Price);
       data.append("myFile", myFile);
 
-      // let data = {
-      //   name: Name,
-      //   brand: Brand,
-      //   type: Type,
-      //   price: Price,
-      // };
-
       try {
+        let config = {
+          headers: {
+            "Content-Type": "multipart/json",
+            "x-auth-token": token,
+          },
+        };
         const response = await axios.post(
           "http://localhost:5000/api/cars/",
           data,
           config
         );
         console.log(response);
-        navigate("/userProfile");
-      } catch (err) {
-        console.log(err);
+        navigate("/Admin_listcars");
+      } catch (error) {
+        console.log(error);
+        if(error.response && error.response.status >= 400 && error.response.status <=500){
+          SetError(error.response.data)
+          console.log(error)
+        }
       }
     };
 
@@ -140,7 +148,7 @@ const Admin_addcar = () => {
                       onChange={(e) => onChange2(e)}
                     />
                   </div>
-
+                  {err.errors && <div className='alert alert-danger'>{err.errors[0].msg}</div>}
                   <br />
                   <button
                     type="submit"

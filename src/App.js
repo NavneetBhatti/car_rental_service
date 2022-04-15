@@ -26,6 +26,7 @@ import Admin_userlist from "./Admin/UserList";
 import Inquires from "./Admin/Inquires";
 import Respond from "./Admin/Respond";
 import ListCars from "./Admin/ListCars";
+import Admin_Bookings from "./Admin/Bookings";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("false");
@@ -64,6 +65,7 @@ const App = () => {
         <Route path="Inquires_list" element={<Inquires />} />
         <Route path="Respond" element={<Respond />} />
         <Route path="Admin_Listcars" element={<ListCars />} />
+        <Route path="Admin_Bookings" element={<Admin_Bookings />} />
       </Routes>
     );
   } else {

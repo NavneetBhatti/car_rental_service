@@ -18,5 +18,9 @@ export const SidebarList = [
   {
     title: "Cars",
     url: "/Admin_listcars",
-  }, //
+  },
+  {
+    title: "Booking Action",
+    url: "/Admin_Bookings",
+  },
 ];
