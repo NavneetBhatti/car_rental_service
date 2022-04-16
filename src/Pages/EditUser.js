@@ -7,7 +7,7 @@ const EditUser = () => {
   let navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
   const id = queryParams.get("userID");
-
+  const [err, SetError] = useState("");
   const [formData2, setFromDate] = useState({
     Email: "",
     Name: "",
@@ -46,8 +46,16 @@ const EditUser = () => {
       );
       console.log(response);
       navigate("/userProfile");
-    } catch (err) {
-      console.log(err.response);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        SetError(error.response.data);
+        alert(err.error[0].msg);
+        console.log(err);
+      }
     }
   };
 
@@ -108,6 +116,7 @@ const EditUser = () => {
           <div className="col-md-3 mb-3">
             <input type="submit" value="Update details" />
           </div>
+          {err.errors && <div className="alert alert-danger">{err.errors}</div>}
         </form>
       </div>
     </>
