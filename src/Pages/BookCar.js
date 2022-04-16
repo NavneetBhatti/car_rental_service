@@ -23,7 +23,7 @@ const Booking = () => {
   const [days, setDays] = useState([]);
   const [price, setPrice] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
-
+  const [err, SetError] = useState("");
   const { id } = useParams();
   console.log(id);
 
@@ -61,27 +61,39 @@ const Booking = () => {
         "x-auth-token": token,
       },
     };
-    axios
-      .post(
-        "http://localhost:5000/api/bookings/",
-        {
-          carId: id,
-          carName: car.name,
-          carType: car.type,
-          dateFrom: data.dateFrom,
-          dateTo: data.dateTo,
-          totalPrice: price,
-          status: data.status,
-        },
-        config
-      )
-      .then((res) => {
-        console.log("--test2--");
-        console.log(car.carName);
-        console.log(res.data);
-        console.log(typeof dateFrom);
-        alert("Car Booked successfully !!");
-      });
+
+    try {
+      if (
+        data.dateFrom == null ||
+        data.dateFrom == undefined ||
+        data.dateFrom == ""
+      ) {
+        SetError("Dates Missing");
+      }
+      axios
+        .post(
+          "http://localhost:5000/api/bookings/",
+          {
+            carId: id,
+            carName: car.name,
+            carType: car.type,
+            dateFrom: data.dateFrom,
+            dateTo: data.dateTo,
+            totalPrice: price,
+            status: data.status,
+          },
+          config
+        )
+        .then((res) => {
+          console.log("--test2--");
+          console.log(car.carName);
+          console.log(res.data);
+          console.log(typeof dateFrom);
+          alert("Car Booked successfully !!");
+        });
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   function noOfdays() {
@@ -93,7 +105,12 @@ const Booking = () => {
     setDays(Difference_In_Days);
     setPrice(price);
   }
+  var today = new Date(); //defaulting today's date to End Date form component.
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
+  var yyyy = today.getFullYear();
 
+  var today = yyyy + "-" + mm + "-" + dd;
   useEffect(() => {
     noOfdays();
   }, [data]);
@@ -132,6 +149,7 @@ const Booking = () => {
                       onChange={(e) => handle(e)}
                       value={data.dateFrom}
                       id="dateFrom"
+                      required
                     />
                   </Col>
                   <Col>
@@ -141,6 +159,7 @@ const Booking = () => {
                       value={data.dateTo}
                       onChange={(e) => handle(e)}
                       id="dateTo"
+                      required
                     />
                   </Col>
                 </Row>
@@ -191,25 +210,52 @@ const Booking = () => {
                 <Row>
                   <Col>
                     <Form.Label>Card Number </Form.Label>
-                    <Form.Control placeholder="card number" required />
+                    <Form.Control
+                      placeholder="XXXX-XXXX-XXXX-XXXX"
+                      minlength="16"
+                      maxlength="16"
+                      required
+                      pattern="[0-9]+"
+                      title="Please Enter a Valid Credit/Debit Number"
+                    />
                   </Col>
                   <Col>
                     <Form.Label>Name on Card</Form.Label>
-                    <Form.Control placeholder="name on card" required />
+                    <Form.Control
+                      placeholder="John"
+                      pattern="[A-Za-z]+"
+                      title="Name only"
+                      required
+                    />
                   </Col>
                 </Row>
                 <br />
                 <Row>
                   <Col>
                     <Form.Label>CVV</Form.Label>
-                    <Form.Control placeholder="cvv" required />
+                    <Form.Control
+                      placeholder="###"
+                      minlength="3"
+                      maxlength="3"
+                      pattern="[0-9]{3}"
+                      title="CVV is invalid"
+                      required
+                    />
                   </Col>
                   <Col>
                     <Form.Label>Expiry Date </Form.Label>
-                    <Form.Control placeholder="expiry date" required />
+                    <Form.Control
+                      placeholder="MM/YY"
+                      maxlength="4"
+                      pattern="(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})+"
+                      required
+                    />
                   </Col>
                 </Row>
                 <br />
+                {err.errors && (
+                  <div className="alert alert-danger">{err.errors}</div>
+                )}
                 <Button variant="primary" type="submit" name="submit">
                   Book Now
                 </Button>
