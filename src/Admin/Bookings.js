@@ -76,69 +76,80 @@ const Bookings = () => {
   if (decoded.user.role == "1") {
     return (
       <>
-        <div className="container m-4 p-4">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">User Id</th>
-                <th scope="col">Car Name</th>
-                <th scope="col">Car Type</th>
-                <th scope="col">Date From</th>
-                <th scope="col">Date To</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Status</th>
-                <th scope="col" colspan="2">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {cars.map((currElem) => {
-                return (
+        <div classname="container">
+          <div className="row align-items-start">
+            <div className="col-3">
+              <Sidebar />
+            </div>
+            <div className="col-8">
+              <br />
+
+              <table className="table">
+                <thead>
                   <tr>
-                    <td>{currElem.user}</td>
-                    <td>{currElem.carName}</td>
-                    <td>{currElem.carType}</td>
-                    <td>{currElem.dateFrom}</td>
-                    <td>{currElem.dateTo}</td>
-                    <td>{currElem.totalPrice}</td>
-                    <td>
-                      {currElem.status == "1" ? "Pending" : "Action Taken"}
-                    </td>
-                    {currElem.status == "1" ? (
-                      <>
-                        <td>
-                          <button
-                            onClick={(e) => actionfn(e)}
-                            data-userid={currElem.b_id}
-                            data-action={0}
-                            type="button"
-                            className="btn  m-1 btn-sm btn-danger"
-                          >
-                            Reject
-                          </button>
-                        </td>
-                        <td>
-                          {" "}
-                          <button
-                            onClick={(e) => actionfn(e)}
-                            data-userid={currElem.b_id}
-                            data-action={2}
-                            type="button"
-                            className="btn  m-1 btn-sm btn-success"
-                          >
-                            Approve
-                          </button>
-                        </td>
-                      </>
-                    ) : (
-                      <>{currElem.status == "0" ? "Rejected" : "Approved"}</>
-                    )}
+                    <th scope="col">User Id</th>
+                    <th scope="col">Car Name</th>
+                    <th scope="col">Car Type</th>
+                    <th scope="col">Date From</th>
+                    <th scope="col">Date To</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" colspan="2">
+                      Action
+                    </th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  {cars.map((currElem) => {
+                    return (
+                      <tr>
+                        <td>{currElem.user}</td>
+                        <td>{currElem.carName}</td>
+                        <td>{currElem.carType}</td>
+                        <td>{currElem.dateFrom}</td>
+                        <td>{currElem.dateTo}</td>
+                        <td>{currElem.totalPrice}</td>
+                        <td>
+                          {currElem.status == "1" ? "Pending" : "Action Taken"}
+                        </td>
+                        {currElem.status == "1" ? (
+                          <>
+                            <td>
+                              <button
+                                onClick={(e) => actionfn(e)}
+                                data-userid={currElem.b_id}
+                                data-action={0}
+                                type="button"
+                                className="btn  m-1 btn-sm btn-danger"
+                              >
+                                Reject
+                              </button>
+                            </td>
+                            <td>
+                              {" "}
+                              <button
+                                onClick={(e) => actionfn(e)}
+                                data-userid={currElem.b_id}
+                                data-action={2}
+                                type="button"
+                                className="btn  m-1 btn-sm btn-success"
+                              >
+                                Approve
+                              </button>
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            {currElem.status == "0" ? "Rejected" : "Approved"}
+                          </>
+                        )}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </>
     );
