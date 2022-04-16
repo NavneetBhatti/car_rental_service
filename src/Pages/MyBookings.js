@@ -27,6 +27,32 @@ const Bookings = () => {
   useEffect(() => {
     getUsers();
   }, []);
+
+  const ReturnCar = async (e) => {
+    const id = e.target.getAttribute("data-bookingId");
+    console.log(id);
+
+    let token = localStorage.getItem("Usertoken");
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    };
+    console.log(token);
+    try {
+      const response = await axios.delete(
+        "http://localhost:5000/api/bookings/" + id,
+        config
+      );
+      window.location.reload();
+      console.log(response);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   const Contactus = (e) => {
     navigate("/Contact");
   };
@@ -74,6 +100,15 @@ const Bookings = () => {
                       ) : (
                         <>
                           <b class="text-success">Booking Approved</b>
+                          <button
+                            type="submit"
+                            data-bookingId={currElem._id}
+                            class="btn btn-info"
+                            onClick={(e) => ReturnCar(e)}
+                          >
+                            {" "}
+                            Return Car
+                          </button>
                         </>
                       )}
                     </>
