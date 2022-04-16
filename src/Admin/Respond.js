@@ -42,6 +42,7 @@ const Respond = () => {
         data,
         config
       );
+      alert("Email sent to: "+email);
       console.log(response);
     navigate("/Inquires_list");
     } catch (err) {

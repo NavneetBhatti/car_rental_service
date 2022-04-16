@@ -40,24 +40,24 @@ const Contact = () => {
         data,
         config
       );
+      alert("Your response has been noted, check your email!");
       console.log(response);
-    } catch (err) {
+    } catch (error) {
       if (
-        err.response &&
-        err.response.status >= 400 &&
-        err.response.status <= 500
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
       ) {
-        SetError(err.response.data);
+        SetError(error.response.data);
+        alert(err.error[0].msg);
+        console.log(err);
       }
-
-      console.log(err);
     }
   };
 
   return (
     <>
 
-{err.errors && <div class="modal-dialog modal-fullscreen-sm-down">{err.errors}</div>}
       <div className="container">
         <section className="mb-4">
           <h2 className="h1-responsive font-weight-bold text-center my-4">
@@ -141,8 +141,9 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-
+                {err.errors && <div className="alert alert-danger">{err.errors}</div>}
                 <div className="text-center text-md-left">
+                
                   <input
                     type="submit"
                     className="btn btn-primary"
