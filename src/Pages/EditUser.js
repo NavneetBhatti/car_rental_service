@@ -47,7 +47,7 @@ const EditUser = () => {
       console.log(response);
       navigate("/userProfile");
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
     }
   };
 
