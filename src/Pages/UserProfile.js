@@ -16,7 +16,8 @@ const UserProfile = () => {
     }
 
     if (token) {
-      let decoded = jwt_decode(token);
+      console.log(token);
+      console.log(decoded.user._id);
       a = "http://localhost:5000/api/user/" + decoded.user._id;
     }
   } catch (err) {
@@ -25,8 +26,16 @@ const UserProfile = () => {
 
   const [posts, setPosts] = useState([]);
   const sendGetRequest = async () => {
+    let token = localStorage.getItem("Usertoken");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    };
+
     try {
-      const response = await axios.get(a);
+      const response = await axios.get(a, config);
       setPosts(response.data);
     } catch (err) {
       console.log(err.message);
