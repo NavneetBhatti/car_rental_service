@@ -63,7 +63,7 @@ const EditAbout = () => {
     return (
       <>
         <div className="">
-          <div className="row align-items-start">
+          <div className="row">
             <div className="col-3">
               <Sidebar />
             </div>

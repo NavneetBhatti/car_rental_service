@@ -6,7 +6,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 
 const Admin_addcar = () => {
-  const [err,SetError]=useState("")
+  const [err, SetError] = useState("");
   let navigate = useNavigate();
   const [myFile, setFile] = useState();
   const [formData2, setFromDate] = useState({
@@ -36,7 +36,6 @@ const Admin_addcar = () => {
     };
 
     const onSubmit = async (e) => {
-      
       e.preventDefault();
       let token = localStorage.getItem("Usertoken");
 
@@ -71,9 +70,13 @@ const Admin_addcar = () => {
         navigate("/Admin_listcars");
       } catch (error) {
         console.log(error);
-        if(error.response && error.response.status >= 400 && error.response.status <=500){
-          SetError(error.response.data)
-          console.log(error)
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          SetError(error.response.data);
+          console.log(error);
         }
       }
     };
@@ -82,7 +85,7 @@ const Admin_addcar = () => {
       return (
         <>
           <div classname="container">
-            <div className="row align-items-start">
+            <div className="row">
               <div className="col">
                 <Sidebar />
               </div>
@@ -148,7 +151,11 @@ const Admin_addcar = () => {
                       onChange={(e) => onChange2(e)}
                     />
                   </div>
-                  {err.errors && <div className='alert alert-danger'>{err.errors[0].msg}</div>}
+                  {err.errors && (
+                    <div className="alert alert-danger">
+                      {err.errors[0].msg}
+                    </div>
+                  )}
                   <br />
                   <button
                     type="submit"

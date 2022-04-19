@@ -11,13 +11,13 @@ const AccordionSection = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 20vh;
+  height: 10vh;
   background: #fff;
+  padding-top: 100px;
 `;
 
 const Container = styled.div`
-  position: absolute;
-  top: 30%;
+  top: 25%;
   box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
 `;
 
@@ -32,7 +32,7 @@ const Wrap = styled.div`
   cursor: pointer;
   h1 {
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1rem;
   }
   span {
     margin-right: 1.5rem;
@@ -51,6 +51,8 @@ const Dropdown = styled.div`
   border-bottom: 1px solid #00ffb9;
   border-top: 1px solid #00ffb9;
   p {
+    padding-top: 10px;
+
     font-size: 1rem;
   }
 `;
@@ -81,10 +83,10 @@ const Faq = () => {
   }, []);
 
   return (
-    <div>
-      <IconContext.Provider value={{ color: "#00FFB9", size: "20px" }}>
-        <AccordionSection>
-          <Container>
+    <div className="faq">
+      <div className="m-5 pb-5 ">
+        <IconContext.Provider value={{ color: "#00FFB9" }}>
+          <AccordionSection>
             {users.map((currElem, index) => {
               return (
                 <>
@@ -100,9 +102,9 @@ const Faq = () => {
                 </>
               );
             })}
-          </Container>
-        </AccordionSection>
-      </IconContext.Provider>
+          </AccordionSection>
+        </IconContext.Provider>
+      </div>
     </div>
   );
 };

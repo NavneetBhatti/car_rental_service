@@ -4,10 +4,6 @@ export const MenuList2 = [
     url: "/",
   },
   {
-    title: "CarList",
-    url: "/Carlist",
-  },
-  {
     title: "Admin",
     url: "/Admin_addcar",
   },

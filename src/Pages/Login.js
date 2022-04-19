@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Redirect } from "react-router-dom";
 import axios from "axios";
 import decode from "jwt-decode";
 import jwt_decode from "jwt-decode";
@@ -46,20 +46,15 @@ const Login = () => {
 
       console.log(decode(response.data.token));
       auth.login();
-      navigate("/");
+      window.location = "/";
     } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        SetError(error.response.data);
-        console.log(err);
-      }
+      SetError(error.response.data);
+      alert(err.error[0].msg);
+      console.log(error.message);
     }
   };
   return (
-    <div className="inner">
+    <div className="inner my-4">
       <br />
       <h3>Login</h3>
       <form onSubmit={(e) => onSubmit(e)}>
@@ -67,7 +62,7 @@ const Login = () => {
           <label>Email</label>
 
           <input
-            required
+          required
             className="form-control"
             type="email"
             placeholder="Email Address"
@@ -79,7 +74,7 @@ const Login = () => {
         <div>
           <label>Password</label>
           <input
-            required
+          required
             className="form-control"
             type="password"
             placeholder="Password"
@@ -107,5 +102,5 @@ const Login = () => {
     </div>
   );
 };
- 
+
 export default Login;

@@ -41,7 +41,7 @@ const Contact = () => {
         config
       );
       alert("Your response has been noted, check your email!");
-      console.log(response);
+      navigate("/");
     } catch (error) {
       if (
         error.response &&

@@ -8,6 +8,7 @@ import axios from "axios";
 const Admin_edituser = () => {
   let navigate = useNavigate();
   const [myFile, setFile] = useState();
+  const [err, SetError] = useState("");
   const [formData2, setFromDate] = useState({
     Brand: "",
     Name: "",
@@ -74,7 +75,7 @@ const Admin_edituser = () => {
       return (
         <>
           <div classname="container">
-            <div className="row align-items-start">
+            <div className="row">
               <div className="col">
                 <Sidebar />
               </div>

@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Inquires = () => {
   const [query, setQuery] = useState([]);
+  const [err, SetError] = useState("");
   const sendGetRequest = async () => {
     let decoded = null;
     let token = null;
@@ -28,9 +29,12 @@ const Inquires = () => {
         config
       );
       setQuery(response.data);
+      
     } catch (err) {
-      console.log(err.message);
+      SetError(err.response.data);
+      alert(err.error[0].msg);
     }
+    
   };
   useEffect(() => {
     sendGetRequest();
@@ -38,7 +42,7 @@ const Inquires = () => {
   return (
     <>
       <div classname="container">
-        <div className="row align-items-start">
+        <div className="row">
           <div className="col-3">
             <Sidebar />
           </div>
@@ -90,6 +94,7 @@ const Querylist = ({ query }) => {
         "http://localhost:5000/api/inquiry/" + id,
         config
       );
+      alert("Query deleted!");
       window.location.reload();
       console.log(response);
     } catch (err) {

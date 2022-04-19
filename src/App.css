@@ -12,7 +12,7 @@ header {
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #8E8268;
+  background-color: #8e8268;
   border-bottom: solid 2px #d4caff;
   width: 80%;
   margin: 30px auto;
@@ -29,30 +29,27 @@ button {
   /* outline: none;
   transition: background-color 0.2s ease, color 0.2s ease; */
   background-color: black;
-  color:white
-
+  color: white;
 }
 .button {
   /* outline: none;
   transition: background-color 0.2s ease, color 0.2s ease; */
   background-color: black;
-  color:white
-
+  color: white;
 }
 
 .footer-dark {
   padding: 50px 0;
   color: #f0f9ff;
   background-color: black;
- 
 }
 
-.bodyy{
-  min-height: 500px;
+.bodyy {
+  min-height: 700px;
 }
 
-.sidebarr{
-  min-height: 500px;
+.sidebarr {
+  min-height: 800px;
   height: 100%;
 }
 .footer-dark h3 {
@@ -60,6 +57,7 @@ button {
   margin-bottom: 12px;
   font-weight: bold;
   font-size: 16px;
+  margin-top: 50px;
 }
 
 .footer-dark ul {
@@ -69,7 +67,16 @@ button {
   font-size: 14px;
   margin-bottom: 0;
 }
-
+.faq {
+  width: 1000px;
+  height: 400px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
 .footer-dark ul a {
   color: inherit;
   text-decoration: none;
@@ -144,7 +151,7 @@ button {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #844D36;
+  background-color: #844d36;
 }
 
 .li {
@@ -187,15 +194,15 @@ button {
   width: 80%;
   margin: 30px auto;
 }
-.tasks{
-  margin-left:50%;
+.tasks {
+  margin-left: 50%;
 }
 
 .page-style {
   min-height: 300px;
   width: 80%;
   margin: 30px auto;
-  color:white;
+  color: white;
 }
 .navbar-light {
   background-color: #ffffff;
@@ -216,7 +223,7 @@ button {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .outer .form-control:focus {
@@ -251,38 +258,46 @@ button {
 .login {
   font-weight: 400;
   font-family: sans-serif;
-  background: #12c2e9;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.price{
+.price {
   margin-top: 20px;
 }
-.btn2{
+.btn2 {
   margin-left: 70px;
 }
-.textRight{
+.textRight {
   margin-right: 10px;
 }
-.bookingForm{
-  border:1px solid black;
-  padding:25px;
-  margin-left:30%;
-  margin-top:5%;
-  width:30%;
+.bookingForm {
+  border: 1px solid black;
+  padding: 25px;
+  margin-left: 30%;
+  margin-top: 5%;
+  width: 30%;
   position: absolute;
   top: 151px;
 
-  
-  right:150px;
+  right: 150px;
 }
-.booking{
-  margin-left:30%;
-  margin-top:2%;
+.booking {
+  margin-left: 30%;
+  margin-top: 2%;
   position: absolute;
   top: 100px;
-  right:280px;
+  right: 280px;
 }
 .accordion {
   padding-left: 1em;
@@ -305,10 +320,9 @@ button {
 .card {
   border-radius: 0px !important;
 }
-.feedback h5{
-  font-size:15px;
+.feedback h5 {
+  font-size: 15px;
 }
-i{
-  font-size:15px;
-
+i {
+  font-size: 15px;
 }

@@ -7,6 +7,7 @@ import {
 } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 // import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -17,8 +18,8 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { Col, Row } from "react-bootstrap";
 // import 'reactjs-popup/dist/index.css';
 import BookedSlots from "./BookedSlots";
-
 const Booking = () => {
+
   const [car, setCar] = useState([]);
   const [days, setDays] = useState([]);
   const [price, setPrice] = useState([]);
@@ -26,7 +27,7 @@ const Booking = () => {
   const [err, SetError] = useState("");
   const { id } = useParams();
   console.log(id);
-
+  let navigate = useNavigate();
   const getUsers = async () => {
     const response = await axios.get(`http://localhost:5000/api/cars/${id}`);
     setCar(response.data);
@@ -90,10 +91,12 @@ const Booking = () => {
           console.log(res.data);
           console.log(typeof dateFrom);
           alert("Car Booked successfully !!");
+          navigate("/Bookings");
         });
     } catch (err) {
       console.log(err.message);
     }
+    
   }
 
   function noOfdays() {

@@ -53,7 +53,7 @@ const Respond = () => {
   return (
     <>
       <div classname="container">
-        <div className="row align-items-start">
+        <div className="row">
           <div className="col-3">
             <Sidebar />
           </div>

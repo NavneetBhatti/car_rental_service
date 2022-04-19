@@ -35,7 +35,7 @@ const Admin_userlist = () => {
     <>
       <div classname="container">
         <div className="row">
-          <div className="col-3 ">
+          <div className="col-3">
             <Sidebar />
           </div>
           <div className="col-8">

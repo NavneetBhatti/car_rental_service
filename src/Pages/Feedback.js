@@ -53,28 +53,28 @@ const Feedback = () => {
     <>
       <Card className="m-5 p-5">
         <Card.Header>Customer Feedback</Card.Header>
+        <div class="bg-dark text-white p-5 text-center">
         <Card.Body>
-          <Card.Title>Help us to give you better services !!</Card.Title>
+          <Card.Title>
+            <h1>A little description about ourselves :)</h1>
+          </Card.Title>
           <Card.Text className="feedback">
-            <h5>
-              Here at Car Rental the customer satisfaction is our highest
-              priority. Therefore our customers’ feedback is really important to
-              us. Your comments, not only that you will help us thrive but will
-              also help us improve our services.
-              <br />
-              <br />
-              If you are one our beloved clients, please take 2 minutes of your
-              time to leave us few comments.
-            </h5>
-            <h5>
-              We want CarRental Service to be a place where you find all of the
-              Car Rental information you need. If you have comments or feedback
-              please fill out the form below. <br />
-              <br />
-              Our FAQs page can help answer many of your car rental questions.
-            </h5>{" "}
+            
+              <p>
+                {" "}
+                We are a privately owned company by two awesome individuals who
+                goes by the name Chaitanya and Rahul. Our subscription service
+                is aimed to offer a package of service depending on the
+                subscription purchased, the overall idea is to bring down your
+                total spending and also providing you the maximum services at
+                affordable rates. Trusted by over a 100K subscribers, We are
+                here to provide you industry breaking service and competitive
+                prices.
+              </p>
+           {" "}
           </Card.Text>
         </Card.Body>
+        </div>
         <br />
 
         {/* --form */}
