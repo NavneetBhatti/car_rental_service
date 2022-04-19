@@ -6,6 +6,18 @@ import jwt_decode from "jwt-decode";
 
 const Admin_userlist = () => {
   const [users, setUsers] = useState([]);
+  useEffect(() => {
+    sendGetRequest();
+  }, []);
+  let a = null;
+  let decoded = null;
+  try {
+    let token = localStorage.getItem("Usertoken");
+    decoded = jwt_decode(token);
+    // valid token format
+  } catch (error) {
+    return "Forbidden";
+  }
 
   const sendGetRequest = async () => {
     let token = localStorage.getItem("Usertoken");
@@ -27,45 +39,46 @@ const Admin_userlist = () => {
     }
   };
 
-  useEffect(() => {
-    sendGetRequest();
-  }, []);
+  if (decoded.user.role == "1") {
+    return (
+      <>
+        <div classname="container">
+          <div className="row">
+            <div className="col-3">
+              <Sidebar />
+            </div>
+            <div className="col-8">
+              <br />
+              <br />
 
-  return (
-    <>
-      <div classname="container">
-        <div className="row">
-          <div className="col-3">
-            <Sidebar />
-          </div>
-          <div className="col-8">
-            <br />
-            <br />
-
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">firstName</th>
-                  <th scope="col">lastname</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Phone</th>
-                  <th>role</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <User user={user} key={user.id} />
-                ))}
-              </tbody>
-            </table>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">firstName</th>
+                    <th scope="col">lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Phone</th>
+                    <th>role</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map((user) => (
+                    <User user={user} key={user.id} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
+  else{
+    return "invalid access!";
+  }
 };
 
 const User = ({ user }) => {

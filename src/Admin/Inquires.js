@@ -7,6 +7,17 @@ import axios from "axios";
 const Inquires = () => {
   const [query, setQuery] = useState([]);
   const [err, SetError] = useState("");
+  useEffect(() => {
+    sendGetRequest();
+  }, []);
+  let decoded1 = null;
+  try {
+    let token = localStorage.getItem("Usertoken");
+    decoded1 = jwt_decode(token);
+    // valid token format
+  } catch (error) {
+    return "Forbidden";
+  }
   const sendGetRequest = async () => {
     let decoded = null;
     let token = null;
@@ -36,10 +47,9 @@ const Inquires = () => {
     }
     
   };
-  useEffect(() => {
-    sendGetRequest();
-  }, []);
-  return (
+ 
+  if (decoded1.user.role == "1"){
+      return (
     <>
       <div classname="container">
         <div className="row">
@@ -72,6 +82,11 @@ const Inquires = () => {
       </div>
     </>
   );
+  }
+  else{
+    return "invalid access!";
+  }
+
 };
 
 const Querylist = ({ query }) => {

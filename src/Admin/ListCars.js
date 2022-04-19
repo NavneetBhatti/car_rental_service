@@ -5,7 +5,19 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const ListCars = () => {
+  useEffect(() => {
+    sendGetRequest();
+  }, []);
     const [query, setQuery] = useState([]);
+    let a = null;
+    let decoded = null;
+    try {
+      let token = localStorage.getItem("Usertoken");
+      decoded = jwt_decode(token);
+      // valid token format
+    } catch (error) {
+      return "Forbidden";
+    }
   const sendGetRequest = async () => {
     let decoded = null;
     let token = null;
@@ -32,10 +44,9 @@ const ListCars = () => {
       console.log(err.message);
     }
   };
-  useEffect(() => {
-    sendGetRequest();
-  }, []);
-  return (
+
+  if (decoded.user.role == "1"){
+     return (
     <>
       <div classname="container">
         <div className="row">
@@ -67,7 +78,12 @@ const ListCars = () => {
         </div>
       </div>
     </>
-  );
+  ); 
+  }
+  else{
+    return "invalid access!";
+  }
+
 };
 
 const Querylist = ({ query }) => {
