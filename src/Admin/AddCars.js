@@ -62,7 +62,7 @@ const Admin_addcar = () => {
           },
         };
         const response = await axios.post(
-          "http://localhost:5000/api/cars/",
+          "https://carrentalback.herokuapp.com/api/cars/",
           data,
           config
         );

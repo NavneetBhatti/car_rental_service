@@ -36,7 +36,7 @@ const Inquires = () => {
     };
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/inquiry/",
+        "https://carrentalback.herokuapp.com/api/inquiry/",
         config
       );
       setQuery(response.data);

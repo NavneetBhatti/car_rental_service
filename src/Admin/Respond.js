@@ -38,7 +38,7 @@ const Respond = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/inquiry/"+ id,
+        "https://carrentalback.herokuapp.com/api/inquiry/"+ id,
         data,
         config
       );

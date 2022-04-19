@@ -42,7 +42,7 @@ const EditAbout = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/aboutus",
+        "https://carrentalback.herokuapp.com/api/aboutus",
         data,
         config
       );

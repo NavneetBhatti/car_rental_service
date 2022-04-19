@@ -97,7 +97,7 @@ const User = ({ user }) => {
     console.log(token);
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/user/" + id,
+        "https://carrentalback.herokuapp.com/api/user/" + id,
         config
       );
       window.location.reload();

@@ -36,7 +36,7 @@ const ListCars = () => {
     };
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/cars/",
+        "https://carrentalback.herokuapp.com/api/cars/",
         config
       );
       setQuery(response.data);
@@ -103,7 +103,7 @@ const Querylist = ({ query }) => {
     };
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/cars/" + id,
+        "https://carrentalback.herokuapp.com/api/cars/" + id,
         config
       );
       window.location.reload();

@@ -29,10 +29,12 @@ const Bookings = () => {
           "x-auth-token": token,
         },
       };
+    let a = "https://carrentalback.herokuapp.com/api/bookings/getAll";
       const response = await axios.get(
-        "http://localhost:5000/api/bookings/getAll",
+        a,
         config
       );
+      console.log(a)
       setCars(response.data);
     } catch (err) {
       console.log(err);
@@ -63,7 +65,7 @@ const Bookings = () => {
     console.log(token);
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/bookings/updateStatus",
+        "https://carrentalback.herokuapp.com/api/bookings/updateStatus",
         data
       );
       window.location.reload();
