@@ -102,10 +102,13 @@ const Querylist = ({ query }) => {
       },
     };
     try {
+      let a = "https://carrentalback.herokuapp.com/api/cars/" + id;
       const response = await axios.delete(
-        "https://carrentalback.herokuapp.com/api/cars/" + id,
+        a,
         config
       );
+      console.log(a);
+      alert("Email sent to: ");
       window.location.reload();
       console.log(response);
     } catch (err) {
