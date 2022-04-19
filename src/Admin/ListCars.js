@@ -108,7 +108,6 @@ const Querylist = ({ query }) => {
         config
       );
       console.log(a);
-      alert("Email sent to: ");
       window.location.reload();
       console.log(response);
     } catch (err) {

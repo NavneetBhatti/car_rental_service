@@ -30,7 +30,7 @@ const Admin_userlist = () => {
     };
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/user/",
+        "https://carrentalback.herokuapp.com/api/user/",
         config
       );
       setUsers(response.data);
@@ -106,8 +106,24 @@ const User = ({ user }) => {
       console.log(err);
     }
   };
-
-  return (
+  if(user.role == 1){
+    return(
+      <>
+          <tr>
+      <td>{user.id}</td>
+      <td>{user.firstname}</td>
+      <td>{user.lastname}</td>
+      <td>{user.email}</td>
+      <td>{user.age}</td>
+      <td>{user.phone}</td>
+      <td>{user.role == "1" ? "admin" : "normal user"}</td>
+      
+    </tr>
+      </>
+    )
+  }
+  else{
+      return (
     <tr>
       <td>{user.id}</td>
       <td>{user.firstname}</td>
@@ -136,6 +152,8 @@ const User = ({ user }) => {
       </td>
     </tr>
   );
+  }
+
 };
 
 export default Admin_userlist;
