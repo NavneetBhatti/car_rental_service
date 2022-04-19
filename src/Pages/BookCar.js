@@ -29,7 +29,7 @@ const Booking = () => {
   console.log(id);
   let navigate = useNavigate();
   const getUsers = async () => {
-    const response = await axios.get(`http://localhost:5000/api/cars/${id}`);
+    const response = await axios.get(`https://carrentalback.herokuapp.com/api/cars/${id}`);
     setCar(response.data);
     console.log(response.data);
     console.log("------------final_______________");
@@ -73,7 +73,7 @@ const Booking = () => {
       }
       axios
         .post(
-          "http://localhost:5000/api/bookings/",
+          "https://carrentalback.herokuapp.com/api/bookings/",
           {
             carId: id,
             carName: car.name,
@@ -118,7 +118,7 @@ const Booking = () => {
     noOfdays();
   }, [data]);
 
-  let a = "http://localhost:5000/uploads/" + car.image;
+  let a = "https://carrentalback.herokuapp.com/uploads/" + car.image;
   return (
     <>
       <Row className="m-5">

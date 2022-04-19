@@ -40,7 +40,7 @@ const EditUser = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/user/",
+        "https://carrentalback.herokuapp.com/api/user/",
         data,
         config
       );

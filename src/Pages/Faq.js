@@ -72,7 +72,7 @@ const Faq = () => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/api/faq");
+    const response = await axios.get("https://carrentalback.herokuapp.com/api/faq");
     setUsers(response.data);
     console.log(response.data);
     console.log("--test");

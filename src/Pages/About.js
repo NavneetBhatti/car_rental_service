@@ -6,7 +6,7 @@ const About = () => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/api/aboutus");
+    const response = await axios.get("https://carrentalback.herokuapp.com/api/aboutus");
     setUsers(response.data);
     console.log(response.data);
     console.log("--test");

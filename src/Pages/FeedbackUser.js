@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card'
 
 
 const FeedbackUser=()=> {
-  const url="http://localhost:5000/api/feedbacks" 
+  const url="https://carrentalback.herokuapp.com/api/feedbacks" 
   const[users,setUsers]=useState([]) 
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -32,7 +32,7 @@ const FeedbackUser=()=> {
   }
   
   const onDelete=(_id)=>{
-      axios.delete(`http://localhost:5000/api/feedbacks/${_id}`)
+      axios.delete(`https://carrentalback.herokuapp.com/api/feedbacks/${_id}`)
     //   alert("del")
     //   window.location.reload(false);
       }
@@ -48,7 +48,7 @@ const FeedbackUser=()=> {
       'x-auth-token': token,
     },
   };
-    axios.post("http://localhost:5000/api/feedbacks/",{
+    axios.post("https://carrentalback.herokuapp.com/api/feedbacks/",{
       name:data.name,
       feedback:data.feedback
     },config)
@@ -74,7 +74,7 @@ const FeedbackUser=()=> {
         },
       };
       const response = await axios.get(
-        'http://localhost:5000/api/feedbacks/',
+        'https://carrentalback.herokuapp.com/api/feedbacks/',
         config
       );
       setUsers(response.data);

@@ -13,7 +13,7 @@ import axios from "axios";
 import Card from "react-bootstrap/Card";
 
 const Feedback = () => {
-  const url = "http://localhost:5000/api/feedbacks";
+  const url = "https://carrentalback.herokuapp.com/api/feedbacks";
   const [users, setUsers] = useState([]);
   const [data, setData] = useState({
     name: "",
@@ -36,7 +36,7 @@ const Feedback = () => {
         },
       };
       const response = await axios.get(
-        "http://localhost:5000/all/api/feedbacks/all",
+        "https://carrentalback.herokuapp.com/all/api/feedbacks/all",
         config
       );
       setUsers(response.data);

@@ -16,7 +16,7 @@ function BookedSlots(props) {
     try {
      
       const response = await axios.get(
-        `http://localhost:5000/api/bookings/${props.id}`
+        `https://carrentalback.herokuapp.com/api/bookings/${props.id}`
         
       );
       setUsers(response.data);

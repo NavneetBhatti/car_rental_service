@@ -18,7 +18,7 @@ const UserProfile = () => {
     if (token) {
       console.log(token);
       console.log(decoded.user._id);
-      a = "http://localhost:5000/api/user/" + decoded.user._id;
+      a = "https://carrentalback.herokuapp.com/api/user/" + decoded.user._id;
     }
   } catch (err) {
     navigate("/");

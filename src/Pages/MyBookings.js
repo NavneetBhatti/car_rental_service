@@ -15,7 +15,7 @@ const Bookings = () => {
         },
       };
       const response = await axios.get(
-        "http://localhost:5000/api/bookings/",
+        "https://carrentalback.herokuapp.com/api/bookings/",
         config
       );
       setUsers(response.data);
@@ -43,7 +43,7 @@ const Bookings = () => {
     console.log(token);
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/bookings/" + id,
+        "https://carrentalback.herokuapp.com/api/bookings/" + id,
         config
       );
       window.location.reload();

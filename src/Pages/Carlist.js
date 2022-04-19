@@ -12,7 +12,7 @@ const CarList = () => {
         "x-auth-token": token,
       },
     };
-    const response = await axios.get("http://localhost:5000/api/cars/", config);
+    const response = await axios.get("https://carrentalback.herokuapp.com/api/cars/", config);
     setUsers(response.data);
     console.log(response.data);
     console.log("--test");
@@ -27,7 +27,7 @@ const CarList = () => {
       <div className="container-fluid mt-5">
         <div className="row text-center">
           {users.map((currElem) => {
-            let a = "http://localhost:5000/uploads/" + currElem.image;
+            let a = "https://carrentalback.herokuapp.com/uploads/" + currElem.image;
             if (currElem.status == "0") {
               return (
                 <div className="col-10 col-md-4 mt-3 mb-3">
@@ -63,7 +63,7 @@ const CarList = () => {
                     <div class="d-flex align-items-center">
                       <div class="image">
                         <img
-                          src="http://localhost:5000/uploads/booked.jpg"
+                          src="https://carrentalback.herokuapp.com/uploads/booked.jpg"
                           class="rounded"
                           width="155"
                           height="100"
